@@ -11,7 +11,7 @@ const SignUp: React.FC = () => {
   const { logUser } = useContext(AuthContext);
 
   const regexes = {
-    username: /^[a-zA-Z0-9_]{4,}$/,
+    username: /^[a-zA-Z0-9_]{2,}$/,
     password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d`!@#$%^&*()_+\-=\]{};':"\\|,.<>?~]{8,}$/,
     email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
   };
