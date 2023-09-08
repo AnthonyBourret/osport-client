@@ -74,7 +74,6 @@ function Event() {
             sport={event.sport_id}
             nbPlayers={event.nb_max_participant}
             status={event.status}
-            winner={event.winner_team}
             duration={event.duration}
             location={event.location}
           />
