@@ -9,7 +9,7 @@ import ResultDraw from '../ResultTitle/ResultDraw';
 
 function List({ events }: { events: Event[] }) {
   return (
-    <ul className="w-full px-5">
+    <ul className="w-full sm:px-5">
       {/* Si events existe, on map dessus */}
       {events && events.map((event: Event) => (
         <li

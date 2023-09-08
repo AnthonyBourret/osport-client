@@ -18,11 +18,11 @@ sports : Sport[]
 function ProfileInfo({ username, avatar, sports } : ProfileInfosInterface) {
 const { setIsAuth } = useContext(AuthContext);
 const [sportChosen, setSportChosen] = useState<'Football' | 'BasketBall'>('Football');
+const [cookie, removeCookie] = useCookies(['user']);
 
 const Logout = async () => {
     setIsAuth(false);
     await axiosInstance.post('/logout');
-    const [cookie, removeCookie] = useCookies(['user']);
     removeCookie('user', '/');
 };
 
@@ -42,7 +42,7 @@ return convertedRating;
 };
 
   return (
-    <div className="flex flex-col h-content gap-4 pb-4 px-5 m-auto w-full h-80 shadow-xs border border-base-300 rounded-xl mb-2 bg-neutral-focus sm:mb-0">
+    <div className="flex flex-col h-content gap-4 pb-4 px-5 m-auto w-full h-80 shadow-xs border border-base-300 rounded-xl mb-2 bg-neutral-focus sm:mb-0 sm:w-1/2">
       <div className="flex flex-col items-center justify-between w-full">
 
         <div className="flex items-center gap-4 p-4 sm:self-start">

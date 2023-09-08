@@ -30,7 +30,7 @@ const eventOpen = events?.filter((event: Event) => (event.status === 'open' || e
             sports={sports}
           />
           {loadingEvent
-            ? <div className="flex items-center justify-center w-[1/2]"><Spinner /></div>
+            ? <div className="flex items-center justify-center w-1/2"><Spinner /></div>
             : <EventListPreview lastEvents={eventClosed} error={errorEvent} />}
         </div>
         <IncomingEventList nextEvents={eventOpen} />

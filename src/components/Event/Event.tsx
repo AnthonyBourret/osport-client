@@ -97,29 +97,29 @@ function Event() {
           )}
         </div>
 
-        <div className="flex flex-col-reverse gap-4 mb-4 min-[800px]:w-1/2 items-center sm:flex-col">
-
-          {/* Composant qui affiche le chat */}
-          <Chat eventId={eventId} />
+        <div className="flex flex-col gap-4 mb-4 min-[800px]:w-1/2 items-center">
 
           {/* Composants pour afficher soit le bouton de confirmation du match,
           soit l'input pour saisir le résultat ou le résultat final */}
 
           {/* Si statut open => Bouton pour confirmer le match */}
           {(event.status === 'open' || event.status === 'full') && (
-          <ConfirmEventButton
-            userId={userId}
-            creatorId={event.creator_id}
-            eventId={eventId}
-            eventStatus={event.status}
-            requiredPlayers={event.nb_max_participant}
-            participants={participants}
-          />
-     )}
+            <ConfirmEventButton
+              userId={userId}
+              creatorId={event.creator_id}
+              eventId={eventId}
+              eventStatus={event.status}
+              requiredPlayers={event.nb_max_participant}
+              participants={participants}
+            />
+            )}
           {/* Si statut closed => Input pour saisir le résultat */}
           {event.status === 'closed' && <ResultInput userId={userId} creatorId={event.creator_id} eventId={eventId} />}
           {/* Si statut finished => Affichage du score final */}
           {event.status === 'finished' && <FinalScore firstTeamScore={event.score_team_1} secondTeamScore={event.score_team_2} />}
+
+          {/* Composant qui affiche le chat */}
+          <Chat eventId={eventId} />
         </div>
       </div>
       )}

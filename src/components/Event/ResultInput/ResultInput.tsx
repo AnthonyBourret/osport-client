@@ -48,7 +48,7 @@ function ResultInput({ userId, creatorId, eventId } : ResultsInputProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 py-4 justify-evenly w-full items-center bg-neutral-focus shadow-sm border rounded-xl border-base-300 h-full min-[1100px]:flex-row"
+      className="flex flex-col gap-4 items-center p-6 bg-neutral-focus shadow-sm border rounded-xl border-base-300 w-full min-[1010px]:flex-row sm:justify-evenly"
     >
       {userId !== creatorId ? (
         <div className="p-4 font-bold text-center">Waiting for final result to be udpated</div>

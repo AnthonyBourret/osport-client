@@ -77,8 +77,11 @@ const handleSubmit = (e : React.ChangeEvent<HTMLFormElement>) => {
 };
 
   return (
-    <div className="flex flex-col items-center py-8 bg-neutral-focus p-4 shadow-sm border rounded-xl border border-base-300 w-full h-full">
+    <div className="flex flex-col items-center bg-neutral-focus p-4 shadow-sm border rounded-xl border border-base-300 w-full h-full ">
 
+      <p className="bg-neutral-focus p-4 shadow-md text-base rounded-xl text-center mx-1 my-2 sm:m-4 ">
+        You can rate other players by clicking their profile pictures
+      </p>
       {/* Première équipe */}
 
       <TeamResult scoreTeam1={firstTeamScore} scoreTeam2={secondTeamScore} team="Team 1" />
@@ -135,10 +138,6 @@ const handleSubmit = (e : React.ChangeEvent<HTMLFormElement>) => {
         ))}
       </div>
       )}
-
-      <p className="bg-neutral-focus p-4 shadow-md text-base rounded-xl text-center mx-1 my-4 sm:m-4">
-        You can rate other players by clicking their profile pictures
-      </p>
       <dialog id="ratingModal" className="modal">
         <form
           method="dialog"

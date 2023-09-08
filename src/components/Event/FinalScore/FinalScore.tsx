@@ -12,8 +12,8 @@ interface ScoreProps {
 }
 function FinalScore({ firstTeamScore, secondTeamScore }: ScoreProps) {
   return (
-    <div className="flex flex-col gap-4 items-center px-6 bg-neutral-focus p-4 shadow-sm border rounded-xl border-base-300 w-full h-full sm:flex-row sm:justify-evenly">
-      <h2 className="text-2xl">Final Score</h2>
+    <div className="flex flex-col gap-4 items-center p-6 bg-neutral-focus shadow-sm border rounded-xl border-base-300 w-full min-[1010px]:flex-row sm:justify-evenly">
+      <h2 className="text-2xl min-[950px]:text-3xl">Final Score</h2>
       <div className="flex p-4">
         <div className="flex flex-col gap-3">
 
