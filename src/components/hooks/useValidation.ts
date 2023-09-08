@@ -8,8 +8,8 @@ const useValidation = (initialState: boolean, regexes: ValidationRegexes) => {
   const [isValid, setIsValid] = useState<boolean>(initialState);
 
   const validate = (value: string, type: string) => {
-    const isValid = regexes[type].test(value);
-    setIsValid(isValid);
+    if (!value) return setIsValid(false);
+    setIsValid(regexes[type].test(value));
     return isValid;
   };
 

@@ -5,10 +5,16 @@ import DOMPurify from 'dompurify';
 import axiosInstance from '../../services/axiosInstance';
 import AuthContext from '../../context/AuthContext';
 import useValidation from '../hooks/useValidation'; // Import the custom hook
-import { usernameCreation, passwordCreation, emailCreation } from '../../utils/regex';
+// import { usernameCreation, passwordCreation, emailCreation } from '../../utils/regex';
 
 const SignUp: React.FC = () => {
   const { logUser } = useContext(AuthContext);
+
+  const regexes = {
+    username: /^[a-zA-Z0-9_]{4,}$/,
+    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d`!@#$%^&*()_+\-=\]{};':"\\|,.<>?~]{8,}$/,
+    email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+  };
 
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -17,9 +23,9 @@ const SignUp: React.FC = () => {
   const [cguChecked, setCguChecked] = useState(false);
   const [newsletterChecked, setNewsletterChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [isUsernameValid, validateUsername] = useValidation(true, usernameCreation);
-  const [isPasswordValid, validatePassword] = useValidation(true, passwordCreation);
-  const [isEmailValid, validateEmail] = useValidation(true, emailCreation);
+  const [isUsernameValid, validateUsername] = useValidation(true, regexes);
+  const [isPasswordValid, validatePassword] = useValidation(true, regexes);
+  const [isEmailValid, validateEmail] = useValidation(true, regexes);
   const [isCguChecked, setIsCguChecked] = useState(true);
   const [isServerValid, setIsServerValid] = useState(true);
 
@@ -89,8 +95,9 @@ const SignUp: React.FC = () => {
             placeholder="Type here"
             className="input input-bordered text-sm"
             value={username}
-            onChange={(e) => {
+            onChange={(e?) => {
               setUsername(e.target.value);
+              // console.log(typeof usernameCreation);
               validateUsername(e.target.value, 'username');
             }}
             onKeyDown={handleKeyDown}
@@ -98,7 +105,7 @@ const SignUp: React.FC = () => {
           <span className="flex gap-2 m-1.5 text-neutral-content text-xs">
             Only letters, numbers and underscores.
           </span>
-          {!isUsernameValid && (
+          {(!isUsernameValid && username !== '') && (
             <span className="text-error flex gap-2 text-xs mt-1 ml-1">
               <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-4 w-4" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
               Minimum length of 2 and only letters, numbers and underscores.
@@ -122,7 +129,7 @@ const SignUp: React.FC = () => {
             }}
             onKeyDown={handleKeyDown}
           />
-          {!isEmailValid ? (
+          {(!isEmailValid && email !== '') ? (
             <span className="text-error flex gap-2 text-xs mt-1 ml-1">
               <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-4 w-4" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
               This doesn't appear to be a valid email address.
@@ -150,7 +157,7 @@ const SignUp: React.FC = () => {
           <span className="flex gap-2 m-1.5 text-neutral-content text-xs">
             Password must contains at least 8 characters
           </span>
-          {!isPasswordValid && (
+          {(!isPasswordValid && password !== '') && (
             <span className="text-error flex gap-2 text-xs mt-1 ml-1">
               <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-4 w-4" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
               Minimum length of 8, at least one letter, one number and a special character
