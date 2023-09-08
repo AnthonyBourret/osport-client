@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { AuthContextProvider } from '../../context/AuthContext';
 //
 import LogIn from '../LogIn/LogIn';
-import SignUp from '../SignUp/SignUp';
+import SignUp from '../Signup/SignUp';
 import Profile from '../Profile/Profile';
 import Contact from '../Contact/Contact';
 import EventList from '../EventList/EventList';
