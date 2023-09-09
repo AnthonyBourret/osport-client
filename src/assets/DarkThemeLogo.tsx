@@ -1,12 +1,11 @@
 import React from 'react';
 
-function DarkLogo() {
+function DarkLogo({ width, height } : { width : string, height : string }) {
   return (
     <svg
-      className="m-2 mt-4"
       xmlns="http://www.w3.org/2000/svg"
-      width="180"
-      height="90"
+      width={width}
+      height={height}
       viewBox="0 0 437 216"
     >
       <path

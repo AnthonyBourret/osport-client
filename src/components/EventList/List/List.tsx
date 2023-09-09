@@ -13,7 +13,7 @@ function List({ events }: { events: Event[] }) {
       {/* Si events existe, on map dessus */}
       {events && events.map((event: Event) => (
         <li
-          className="bg-neutral-focus flex flex-col items-center gap-2 pb-10 shadow-sm border border-base-300 rounded-xl py-2 px-6 my-4 sm:items-center sm:justify-between"
+          className="bg-neutral-focus flex flex-col items-center gap-2 pb-10 shadow-sm border border-base-300 rounded-xl py-2 px-4 my-4 sm:px-6 sm:items-center sm:justify-between"
           key={event.id}
         >
           {/* Loaders and Info container */}
@@ -28,9 +28,17 @@ function List({ events }: { events: Event[] }) {
             ) : (
               !event.winner_team && <ResultLoader status={event.status} />
             )}
+
             <div className="text-right">
               <div className="stat-desc text-sm sm:text-lg">{formDate(event.date)}</div>
-              <div className="stat-desc text-xs sm:text-base">{event.sport_name}</div>
+              <div className="stat-desc text-xs sm:text-base">
+                {event.sport_name}
+                {' '}
+                (
+                {event.nb_max_participant === 6 ? '3v3' : '5v5'}
+                )
+              </div>
+              <div className="stat-desc text-xs sm:text-base">{event.location}</div>
             </div>
           </div>
 

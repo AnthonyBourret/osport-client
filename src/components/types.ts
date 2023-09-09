@@ -1,4 +1,5 @@
 export type Event = {
+  nb_max_participant: number;
   date: string,
   id: number,
   location: string,

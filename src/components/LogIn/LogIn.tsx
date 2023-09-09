@@ -1,11 +1,12 @@
 import React, {
- useState, useContext, FormEvent, ChangeEvent,
+ useState, useContext, useEffect, FormEvent, ChangeEvent,
 } from 'react';
 import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 //
 import AuthContext from '../../context/AuthContext';
 import DarkLogo from '../../assets/DarkThemeLogo';
+import LightLogo from '../../assets/LightThemeLogo';
 
 const LogIn: React.FC = () => {
   const { logUser } = useContext(AuthContext);
@@ -13,6 +14,13 @@ const LogIn: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [isServerValid, setIsServerValid] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'dracula');
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme!);
+    const localTheme = localStorage.getItem('theme');
+    document.querySelector('html')?.setAttribute('data-theme', localTheme!);
+  }, [theme]);
 
   const resetValidationStates = () => {
     setErrorMessage(''); // Reset error messages
@@ -74,12 +82,12 @@ const LogIn: React.FC = () => {
     <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10 sm:w-9/12 sm:m-auto">
       <div className="flex flex-col items-center gap-10">
         <div className="flex items-center">
-          <DarkLogo />
+          {theme === 'dracula' ? <DarkLogo width="240" height="120" /> : <LightLogo width="240" height="120" />}
         </div>
-        <div className="text-xl">Welcome on O'Sport</div>
       </div>
 
       <form className="flex flex-col w-full min-[820px]:w-1/2 items-center p-6 gap-4 bg-neutral-focus shadow-sm border border-gray-500 rounded-xl">
+        <div className="text-xl font-bold">Welcome on O'Sport</div>
         <div className="form-control w-full">
           <label className="label" htmlFor="first-name">
             <span className="label-text text-lg">Username : </span>
