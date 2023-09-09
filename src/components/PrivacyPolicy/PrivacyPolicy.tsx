@@ -10,7 +10,11 @@ const PrivacyPolicy = () => (
 
     <div className="min-h-screen p-8 px-3 sm:px-8 mb-10">
       <div className="max-w-3xl mx-auto bg-neutral-focus p-8 rounded-xl shadow border border-base-300 relative">
-        <Link to="/signup" className="absolute top-5 right-5">
+        <Link
+          to="/signup"
+          onClick={() => window.scrollTo(0, 0)}
+          className="absolute top-5 right-5"
+        >
           <button type="button" className="btn btn-ghost border-2 border-gray-500 sm:btn-md">
             Return
           </button>

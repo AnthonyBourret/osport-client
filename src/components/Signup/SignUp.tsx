@@ -260,10 +260,22 @@ const SignUp: React.FC = () => {
       <div className="text-xs mb-4">
         More about
         {' '}
-        <Link to="/legal_mentions" className="link link-info">Terms of Use</Link>
+        <Link
+          to="/legal_mentions"
+          onClick={() => window.scrollTo(0, 0)}
+          className="link link-info"
+        >
+          Terms of Use
+        </Link>
         {' '}
         and the
-        <Link to="/privacy_policy" className="link link-info"> Privacy Policy</Link>
+        <Link
+          to="/privacy_policy"
+          onClick={() => window.scrollTo(0, 0)}
+          className="link link-info"
+        >
+          Privacy Policy
+        </Link>
       </div>
 
     </div>
