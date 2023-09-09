@@ -21,7 +21,7 @@ function NextEvent({
         <div className="stat-desc text-base font-bold w-1/5 text-center">{sportName}</div>
         <div className="stat-title text-base font-bold w-1/5 text-center">{location}</div>
         <Link to={`/event/${id}`}>
-          <div className="link stat-value text-base font-bold w-1/5 text-center">Go to event</div>
+          <div className="link link-info stat-value text-base font-bold w-1/5 text-center">Go to event</div>
         </Link>
       </div>
     </div>

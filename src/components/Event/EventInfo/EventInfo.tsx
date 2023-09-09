@@ -15,6 +15,7 @@ function EventInfo({
   return (
     <div className="flex flex-col items-center gap-3 w-full bg-neutral-focus py-4 shadow-sm rounded-xl border border-base-300">
 
+      {/* Progress bar container */}
       <ul className="steps w-full py-6">
         <li className="step text-xs min-[900px]:text-sm step-info" data-content="⏳">Preparation</li>
         <li className={`step text-xs min-[900px]:text-sm ${status !== 'open' ? 'step-info' : 'step'}`} data-content="✔">Confirmation</li>
@@ -26,6 +27,8 @@ function EventInfo({
         </li>
         <li className={`step text-xs min-[900px]:text-sm ${status === 'finished' ? 'step-info' : 'step'}`} data-content="🏆">Full Time</li>
       </ul>
+
+      {/* Event tags container */}
       <div className="flex gap-4 p-2 flex-wrap justify-center">
         <div className="badge badge-neutral sm:badge-lg shadow-xl border border-gray-70 p-4">{date}</div>
         <div className="badge badge-neutral sm:badge-lg shadow-xl border border-gray-70 p-4">

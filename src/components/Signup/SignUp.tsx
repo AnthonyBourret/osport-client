@@ -6,6 +6,7 @@ import axiosInstance from '../../services/axiosInstance';
 import AuthContext from '../../context/AuthContext';
 import useValidation from '../hooks/useValidation'; // Import the custom hook
 import { usernameCreation, passwordCreation, emailCreation } from '../../utils/regex';
+import DarkLogo from '../../assets/DarkThemeLogo';
 
 const SignUp: React.FC = () => {
   const { logUser } = useContext(AuthContext);
@@ -74,7 +75,9 @@ const SignUp: React.FC = () => {
   return (
     <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10 sm:w-9/12 sm:m-auto">
       <div className="flex flex-col items-center gap-10">
-        <h1 className="text-6xl">O'sport</h1>
+        <div className="flex items-center">
+          <DarkLogo />
+        </div>
         <div className="text-xl">Welcome on O'Sport</div>
       </div>
 

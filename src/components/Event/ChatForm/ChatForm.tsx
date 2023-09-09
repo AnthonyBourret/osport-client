@@ -53,7 +53,7 @@ function ChatForm({
   };
 
   return (
-    <div className="flex w-full h-[10%] justify-center gap-3 border-t-2 border-neutral-focus min-[800px]:h-[12%]">
+    <div className="flex w-full h-[11%] justify-center gap-3 border-t-2 border-neutral-focus min-[800px]:h-[10%]">
       <form autoComplete="off" onSubmit={handleSubmit} className="flex w-full h-full" ref={messageForm}>
         <input
           name="message"

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 //
 import AuthContext from '../../context/AuthContext';
+import DarkLogo from '../../assets/DarkThemeLogo';
 
 const LogIn: React.FC = () => {
   const { logUser } = useContext(AuthContext);
@@ -72,7 +73,9 @@ const LogIn: React.FC = () => {
   return (
     <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10 sm:w-9/12 sm:m-auto">
       <div className="flex flex-col items-center gap-10">
-        <h1 className="text-6xl">O'sport</h1>
+        <div className="flex items-center">
+          <DarkLogo />
+        </div>
         <div className="text-xl">Welcome on O'Sport</div>
       </div>
 

@@ -29,7 +29,7 @@ const handleClick = () => {
   return (
     <div className="indicator">
       <div
-        className="flex flex-col items-center justify-center gap-y-1"
+        className={`flex flex-col items-center justify-center gap-y-1 ${isConfirmed && 'cursor-pointer'}`}
         onClick={handleClick}
       >
         {status === 'pending'

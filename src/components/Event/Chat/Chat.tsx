@@ -37,7 +37,7 @@ function Chat({ eventId }: { eventId: number }) {
         </button>
       </div>
       <div className="h-full">
-        <div className="flex flex-col-reverse h-[90%] gap-2 p-2 overflow-y-auto w-full min-h-0 bg-neutral-focus shadow-xl rounded-xl border-gray-700 rounded-b-none rounded-t-none border-t-0 min-[800px]:h-[88%]">
+        <div className="flex flex-col-reverse h-[89%] gap-2 p-2 overflow-y-auto w-full min-h-0 bg-neutral-focus shadow-lg rounded-xl border-gray-700 rounded-b-none rounded-t-none border-t-0 min-[800px]:h-[90%]">
           {messages && messages.map((message) => (
             <ChatMessage
               author={message.user.username}

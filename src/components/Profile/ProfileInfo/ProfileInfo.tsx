@@ -42,10 +42,12 @@ return convertedRating;
 };
 
   return (
+    // ProfileInfo container
     <div className="flex flex-col h-content gap-4 pb-4 px-5 m-auto w-full h-80 shadow-xs border border-base-300 rounded-xl mb-2 bg-neutral-focus sm:mb-0 sm:w-1/2">
       <div className="flex flex-col items-center justify-between w-full">
 
-        <div className="flex items-center gap-4 p-4 sm:self-start">
+        {/* Avatar and username container */}
+        <div className="flex items-center gap-6 p-4 sm:self-start">
           <div className="avatar">
             <div className="w-14 rounded-full">
               <img
@@ -56,6 +58,8 @@ return convertedRating;
           </div>
           { username && (<h1 className="text-3xl">{capitalize(username)}</h1>)}
         </div>
+
+        {/* Link to edit profile and logout */}
         <div className="px-4 flex justify-center sm:self-end">
           <Link to="/edit_profile">
             <button type="button" className="btn btn-ghost border-gray-500 btn-xs m-2">Edit profile</button>
@@ -63,8 +67,9 @@ return convertedRating;
           <button type="button" className="btn btn-ghost border-gray-500 btn-xs m-2" onClick={handleClickLogout}>Logout</button>
         </div>
       </div>
-      <div className="w-full h-full flex flex-col justify-evenly items-center gap-4">
 
+      {/* Level info container */}
+      <div className="w-full h-full flex flex-col justify-evenly items-center gap-4">
         <div className="form-control w-full px-4 gap-4">
           <label className="label-text text-xl" htmlFor="sport">Check your level</label>
           <select className="select select-bordered select-sm" onChange={handleChangeSport}>
