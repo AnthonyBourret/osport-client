@@ -9,6 +9,7 @@ import AuthContext from '../../context/AuthContext';
 import useValidation from '../hooks/useValidation'; // Import the custom hook
 import { usernameCreation, passwordCreation, emailCreation } from '../../utils/regex';
 import DarkLogo from '../../assets/DarkThemeLogo';
+import LightLogo from '../../assets/LightThemeLogo';
 
 const SignUp: React.FC = () => {
   const { logUser } = useContext(AuthContext);
