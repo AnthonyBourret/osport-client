@@ -1,13 +1,21 @@
 import React from 'react';
-import Header from '../Header/Header';
-import Menu from '../Menu/Menu';
+import { Link } from 'react-router-dom';
 
 const LegalMentions = () => (
   <>
-    <Header />
-    <Menu />
+    <div className="flex flex-col items-center gap-10 mt-6">
+      <h1 className="text-6xl">O'sport</h1>
+      <div className="text-xl">Welcome on O'Sport</div>
+    </div>
+
     <div className="min-h-screen p-8 px-3 sm:px-8 mb-10">
-      <div className="max-w-3xl mx-auto bg-neutral-focus p-8 rounded shadow">
+      <div className="max-w-3xl mx-auto bg-neutral-focus p-8 rounded-xl shadow border border-base-300 relative">
+        <Link to="/signup" className="absolute top-5 right-5">
+          <button type="button" className="btn btn-ghost border-2 border-gray-500 sm:btn-md">
+            Return
+          </button>
+        </Link>
+
         <h1 className="text-2xl font-bold mb-4">LEGAL NOTICE</h1>
 
         <section className="mb-8">

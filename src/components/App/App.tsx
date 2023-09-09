@@ -20,10 +20,12 @@ function App() {
   return (
     <AuthContextProvider>
       <Routes>
+
         <Route element={<RedirectToProfile />}>
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Route>
+
         <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<Profile />} />
           <Route path="/contact" element={<Contact />} />
@@ -38,10 +40,10 @@ function App() {
         )}
           />
           <Route path="/event/:id" element={<Event />} />
-          <Route path="/legal_mentions" element={<LegalMentions />} />
-          <Route path="/privacy_policy" element={<PrivacyPolicy />} />
         </Route>
 
+        <Route path="/legal_mentions" element={<LegalMentions />} />
+        <Route path="/privacy_policy" element={<PrivacyPolicy />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </AuthContextProvider>

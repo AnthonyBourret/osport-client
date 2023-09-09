@@ -208,7 +208,7 @@ const SignUp: React.FC = () => {
               />
               <span className="label-text text-xs sm:text-sm">
                 Accept
-                <Link to="..." className="link link-info m-1">
+                <Link to="/legal_mentions" className="link link-info m-1">
                   Terms of use
                 </Link>
               </span>
@@ -260,10 +260,10 @@ const SignUp: React.FC = () => {
       <div className="text-xs mb-4">
         More about
         {' '}
-        <Link to="..." className="link link-info">Terms of Use</Link>
+        <Link to="/legal_mentions" className="link link-info">Terms of Use</Link>
         {' '}
         and the
-        <Link to="/" className="link link-info"> Privacy Policy</Link>
+        <Link to="/privacy_policy" className="link link-info"> Privacy Policy</Link>
       </div>
 
     </div>

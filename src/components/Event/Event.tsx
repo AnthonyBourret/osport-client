@@ -14,6 +14,7 @@ import ConfirmEventButton from './ConfirmEventButton/ConfirmEventButton';
 import ResultInput from './ResultInput/ResultInput';
 import FinalScore from './FinalScore/FinalScore';
 import ResponseInvitation from './ResponseInvitation/ResponseInvitation';
+import Footer from '../Footer/footer';
 
 function Event() {
   // On recupère l'id de l'utilisateur connecté dans le AuthContext
@@ -122,7 +123,8 @@ function Event() {
           {event.status === 'finished' && <FinalScore firstTeamScore={event.score_team_1} secondTeamScore={event.score_team_2} />}
         </div>
       </div>
-      )}
+        )}
+      <Footer />
     </>
   );
 }
