@@ -40,7 +40,11 @@ export const AuthContextProvider: FunctionComponent<AuthContextProviderProps> = 
     const storeCredentials = (payload: UserProfile): void => {
     setUser(payload);
     setCookie('user', payload);
-  };
+    };
+
+  useEffect(() => {
+    removeCookie('user');
+  }, [setIsAuth, removeCookie]);
 
   const validateUser = async (): Promise<void> => {
     try {
@@ -86,11 +90,11 @@ export const AuthContextProvider: FunctionComponent<AuthContextProviderProps> = 
 
   return (
     <AuthContext.Provider value={{
- user,
-logUser,
-isAuth,
-setIsAuth,
-}}
+      user,
+      logUser,
+      isAuth,
+      setIsAuth,
+    }}
     >
       {children}
     </AuthContext.Provider>

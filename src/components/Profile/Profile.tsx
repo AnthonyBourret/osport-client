@@ -8,6 +8,7 @@ import useFetch from '../hooks/useFetch';
 import { Event } from '../types';
 import Spinner from '../Spinner/Spinner';
 import IncomingEventList from './IncomingEventList/IncomingEventList';
+import Footer from '../Footer/Footer';
 
 function Profile() {
 const { user: { userInfos: { userId } } } = useContext(AuthContext);
@@ -35,6 +36,7 @@ const eventOpen = events?.filter((event: Event) => (event.status === 'open' || e
         </div>
         <IncomingEventList nextEvents={eventOpen} />
       </div>
+      <Footer />
     </>
   );
 }

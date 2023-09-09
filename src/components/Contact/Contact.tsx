@@ -5,6 +5,7 @@ import ContactList from './ContactList/ContactList';
 import SearchContact from './SearchContact/SearchContact';
 import Header from '../Header/Header';
 import Menu from '../Menu/Menu';
+import Footer from '../Footer/Footer';
 
 function Contact() {
   // On recupere l'id de l'user connecté
@@ -40,7 +41,7 @@ function Contact() {
   if (sentListError) return null;
 
   return (
-    <>
+    <div className="pb-6">
       <Header />
       <Menu />
       <div className="m-4 mb-24 sm:w-3/5 sm:p-4 sm:m-auto sm:pb-4 sm:mt-4">
@@ -52,7 +53,8 @@ function Contact() {
           userId={id}
         />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
