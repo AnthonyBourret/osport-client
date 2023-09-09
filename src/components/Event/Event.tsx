@@ -66,7 +66,7 @@ function Event() {
       && (
       <div className="flex flex-col w-full p-4 mx-auto mb-24 min-[800px]:flex-row sm:gap-4 sm:w-10/12 sm:m-auto sm:my-4 sm:mb-10 sm:pb-4">
 
-        <div className="flex flex-col gap-4 mb-4 min-[800px]:w-1/2 items-center ">
+        <div className="flex flex-col gap-4 mb-4 items-center min-[800px]:w-1/2">
 
           {/* On envoie les infos nécessaires au composant d'affichage des informations du match */}
           <EventInfo
@@ -97,7 +97,7 @@ function Event() {
           )}
         </div>
 
-        <div className="flex flex-col gap-4 mb-4 min-[800px]:w-1/2 items-center">
+        <div className="flex flex-col gap-4 mb-4 items-center min-[800px]:w-1/2">
 
           {/* Composants pour afficher soit le bouton de confirmation du match,
           soit l'input pour saisir le résultat ou le résultat final */}

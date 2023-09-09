@@ -29,7 +29,7 @@ export default {
           'base-300' : '#f0f0f0',
           'base-content' : '#2a2e37',
 
-          'info' : '#262bc0',
+          'info' : '#1c92f2',
           'success' : '#01b741',
           'warning' : '#d03516',
           'error' : '#ff5724',

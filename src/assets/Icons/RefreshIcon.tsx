@@ -1,6 +1,6 @@
 import React from 'react';
 
-function RefresIcon() {
+function RefreshIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,4 +22,4 @@ function RefresIcon() {
   );
 }
 
-export default RefresIcon;
+export default RefreshIcon;

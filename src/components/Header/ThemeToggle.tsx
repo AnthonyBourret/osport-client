@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 function ThemeToggle() {
     const [theme, setTheme] = useState(localStorage.getItem('theme'));
 
-    const handleToggle = (e: any) => {
+    const handleToggle = () => {
         if (theme === 'custom-light') {
           setTheme('dracula');
         } else {

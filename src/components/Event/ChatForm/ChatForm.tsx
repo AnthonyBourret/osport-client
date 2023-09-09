@@ -53,8 +53,8 @@ function ChatForm({
   };
 
   return (
-    <div className="flex w-full justify-center gap-3 border-t-2 border-neutral-focus">
-      <form autoComplete="off" onSubmit={handleSubmit} className="w-full" ref={messageForm}>
+    <div className="flex w-full h-[10%] justify-center gap-3 border-t-2 border-neutral-focus min-[800px]:h-[12%]">
+      <form autoComplete="off" onSubmit={handleSubmit} className="flex w-full h-full" ref={messageForm}>
         <input
           name="message"
           id="message"
@@ -62,7 +62,7 @@ function ChatForm({
           placeholder="Type here"
           // La valeur de l'input change quand du texte est saisi dans ce dernier
           onChange={(e) => setInputValue(e.target.value)}
-          className="input w-[85%] border-2 border-neutral-focus rounded-t-none"
+          className="input w-[85%] h-full border-2 border-neutral-focus rounded-t-none"
         />
         <button type="submit" className={`w-[15%] ${inputValue === null ? 'btn-disabled' : 'btn'} btn-ghost`}>Send</button>
       </form>
