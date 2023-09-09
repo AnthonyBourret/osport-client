@@ -89,7 +89,10 @@ function ResultInput({ userId, creatorId, eventId } : ResultsInputProps) {
         ) : (
           <button
             type="submit"
-            disabled={!resultTeamOne || !resultTeamTwo}
+            disabled={
+              (resultTeamOne === null || resultTeamTwo === null)
+              || (!resultTeamOne || !resultTeamTwo)
+            }
             className="btn btn-ghost border-gray-500"
           >
             Save result

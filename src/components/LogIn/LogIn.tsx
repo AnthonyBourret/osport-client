@@ -70,7 +70,7 @@ const LogIn: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10">
+    <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10 sm:w-9/12 sm:m-auto">
       <div className="flex flex-col items-center gap-10">
         <h1 className="text-6xl">O'sport</h1>
         <div className="text-xl">Welcome on O'Sport</div>
