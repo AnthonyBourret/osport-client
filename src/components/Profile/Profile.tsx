@@ -8,7 +8,7 @@ import useFetch from '../hooks/useFetch';
 import { Event } from '../types';
 import Spinner from '../Spinner/Spinner';
 import IncomingEventList from './IncomingEventList/IncomingEventList';
-import Footer from '../Footer/footer';
+import Footer from '../Footer/Footer';
 
 function Profile() {
 const { user: { userInfos: { userId } } } = useContext(AuthContext);

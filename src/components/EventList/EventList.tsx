@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import Menu from '../Menu/Menu';
 import CreateEventButton from './CreateEventButton/CreateEventButton';
 import List from './List/List';
-import Footer from '../Footer/footer';
+import Footer from '../Footer/Footer';
 
 function EventList() {
   // On recupère l'id de l'user connecté via le AuthContext

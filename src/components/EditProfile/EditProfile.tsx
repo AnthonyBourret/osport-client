@@ -5,7 +5,7 @@ import Menu from '../Menu/Menu';
 import EditInfo from './EditInfo/EditInfo';
 import EditLevel from './EditLevel/EditLevel';
 import useFetch from '../hooks/useFetch';
-import Footer from '../Footer/footer';
+import Footer from '../Footer/Footer';
 
 function EditProfile() {
   const { user: { userInfos: { userId } } } = useContext(AuthContext);

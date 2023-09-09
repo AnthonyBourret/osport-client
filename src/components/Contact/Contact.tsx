@@ -5,7 +5,7 @@ import ContactList from './ContactList/ContactList';
 import SearchContact from './SearchContact/SearchContact';
 import Header from '../Header/Header';
 import Menu from '../Menu/Menu';
-import Footer from '../Footer/footer';
+import Footer from '../Footer/Footer';
 
 function Contact() {
   // On recupere l'id de l'user connecté

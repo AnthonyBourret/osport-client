@@ -14,7 +14,7 @@ import ConfirmEventButton from './ConfirmEventButton/ConfirmEventButton';
 import ResultInput from './ResultInput/ResultInput';
 import FinalScore from './FinalScore/FinalScore';
 import ResponseInvitation from './ResponseInvitation/ResponseInvitation';
-import Footer from '../Footer/footer';
+import Footer from '../Footer/Footer';
 
 function Event() {
   // On recupère l'id de l'utilisateur connecté dans le AuthContext

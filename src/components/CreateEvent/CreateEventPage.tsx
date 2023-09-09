@@ -5,7 +5,7 @@ import CreateEventForm from './EventForm/EventForm';
 import FriendsToInvite from './FriendsToInvite/FriendsToInvite';
 // import EventContactList from './EventContactList/EventContactList';
 import SendInvitations from './SendInvitations/SendInvitations';
-import Footer from '../Footer/footer';
+import Footer from '../Footer/Footer';
 
 function CreateEvent() {
   return (
