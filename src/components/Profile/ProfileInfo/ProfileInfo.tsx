@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
+// import { useCookies, Cookies } from 'react-cookie';
 import levelNumberToString from '../../../utils/levelNumberToString';
 import axiosInstance from '../../../services/axiosInstance';
 import capitalize from '../../../utils/capitalize';
@@ -18,16 +18,11 @@ sports : Sport[]
 function ProfileInfo({ username, avatar, sports } : ProfileInfosInterface) {
 const { setIsAuth } = useContext(AuthContext);
 const [sportChosen, setSportChosen] = useState<'Football' | 'BasketBall'>('Football');
+// const [cookie, removeCookie] = useCookies(['user']);
 
-const Logout = async () => {
+const handleClickLogout = async () => {
     setIsAuth(false);
     await axiosInstance.post('/logout');
-    const [cookie, removeCookie] = useCookies(['user']);
-    removeCookie('user', '/');
-};
-
-const handleClickLogout = () => {
-    Logout();
 };
 
 const handleChangeSport = (e) => {
