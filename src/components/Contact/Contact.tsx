@@ -45,7 +45,7 @@ function Contact() {
       <Header />
 
       {sentLoading || acceptedLoading || pendingLoading
-      ? <div className="flex items-center justify-center w-full"><Spinner /></div>
+      ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div>
       : (
         <>
           <div className="m-4 sm:w-3/5 sm:p-4 sm:m-auto sm:pb-4 sm:mt-4">

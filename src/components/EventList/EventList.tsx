@@ -30,7 +30,7 @@ function EventList() {
     <div className="pb-4 mb-8 sm:mb-0">
       <Header />
       {listLoading
-        ? <div className="flex items-center justify-center w-full"><Spinner /></div>
+        ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div>
         : (
           <>
             <div className="flex flex-col items-center p-4 sm:w-4/5 sm:m-auto sm:my-4 sm:pb-4">

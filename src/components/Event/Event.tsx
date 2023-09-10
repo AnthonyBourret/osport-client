@@ -14,6 +14,7 @@ import ResultInput from './ResultInput/ResultInput';
 import FinalScore from './FinalScore/FinalScore';
 import ResponseInvitation from './ResponseInvitation/ResponseInvitation';
 import Footer from '../Footer/Footer';
+import Spinner from '../Spinner/Spinner';
 
 function Event() {
   // On recupère l'id de l'utilisateur connecté dans le AuthContext
@@ -32,8 +33,8 @@ function Event() {
 
   // On utilise le hook personnalisé pour récupérer les infos de l'event et les
   // particpants d'un match
-  const { data: event/* , error: eventsError */ } = useFetch(`event/details/${eventId}`, 'GET');
-  const { data: participants/* , error: participantsError */ } = useFetch(`participant/event/${eventId}`, 'GET');
+  const { data: event, loading: eventLoading/* , error: eventsError */ } = useFetch(`event/details/${eventId}`, 'GET');
+  const { data: participants, loading: participantsLoading/* , error: participantsError */ } = useFetch(`participant/event/${eventId}`, 'GET');
 
   useEffect(() => {
     const checkIfInvited = () => {
@@ -123,7 +124,7 @@ function Event() {
         </div>
       </div>
         )}
-      <Footer />
+      {eventLoading || participantsLoading ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div> : <Footer />}
     </div>
   );
 }

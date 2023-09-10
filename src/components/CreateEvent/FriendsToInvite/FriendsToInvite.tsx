@@ -57,7 +57,7 @@ function FriendsToInvite() {
     <div className="flex flex-col gap-3 w-full sm:w-1/2 sm:self-start bg-neutral-focus p-4 shadow-sm border rounded-xl border-base-300 max-h-[500px] overflow-y-scroll">
       <h2 className="text-xl pb-6 sm:text-3xl">Chose participants</h2>
       {userInfoLoading
-        ? <div className="flex items-center justify-center w-full"><Spinner /></div>
+        ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div>
         : (
           <ul className="w-full flex flex-col gap-4">
 
