@@ -3,7 +3,6 @@ import AuthContext from '../../context/AuthContext';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import EventListPreview from './EventListPreview/EventListPreview';
 import Header from '../Header/Header';
-import Menu from '../Menu/Menu';
 import useFetch from '../hooks/useFetch';
 import { Event } from '../types';
 import Spinner from '../Spinner/Spinner';
@@ -23,7 +22,7 @@ const eventOpen = events?.filter((event: Event) => (event.status === 'open' || e
   return (
     <div className="mb-12 sm:mb-0">
       <Header />
-      <Menu />
+
       {/* Loader for the whole page while fetching is active */}
       {loadingSports || loadingOwnRating || loadingEvent
       ? <div className="flex items-center justify-center w-full"><Spinner /></div>

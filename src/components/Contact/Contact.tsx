@@ -4,7 +4,6 @@ import useFetch from '../hooks/useFetch';
 import ContactList from './ContactList/ContactList';
 import SearchContact from './SearchContact/SearchContact';
 import Header from '../Header/Header';
-import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
 import Spinner from '../Spinner/Spinner';
 
@@ -44,7 +43,7 @@ function Contact() {
   return (
     <div className="pb-6 mb-8 sm:mb-0">
       <Header />
-      <Menu />
+
       {sentLoading || acceptedLoading || pendingLoading
       ? <div className="flex items-center justify-center w-full"><Spinner /></div>
       : (

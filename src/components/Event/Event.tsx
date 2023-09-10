@@ -4,7 +4,6 @@ import formDate from '../../utils/formatDate';
 import AuthContext from '../../context/AuthContext';
 import useFetch from '../hooks/useFetch';
 import Header from '../Header/Header';
-import Menu from '../Menu/Menu';
 import EventInfo from './EventInfo/EventInfo';
 import PlayerList from './PlayerList/PlayerList';
 import PlayerListConfirmed from './PlayerListConfirmed/PlayerListConfirmed';
@@ -60,7 +59,7 @@ function Event() {
   return (
     <div className="mb-12 sm:mb-0">
       <Header />
-      <Menu />
+
       {isInvited && (<ResponseInvitation eventId={event?.id} userId={userId} />) }
 
       {event

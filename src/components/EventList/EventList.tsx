@@ -3,7 +3,6 @@ import AuthContext from '../../context/AuthContext';
 import useFetch from '../hooks/useFetch';
 
 import Header from '../Header/Header';
-import Menu from '../Menu/Menu';
 import CreateEventButton from './CreateEventButton/CreateEventButton';
 import List from './List/List';
 import Footer from '../Footer/Footer';
@@ -30,7 +29,6 @@ function EventList() {
   return (
     <div className="pb-4 mb-8 sm:mb-0">
       <Header />
-      <Menu />
       {listLoading
         ? <div className="flex items-center justify-center w-full"><Spinner /></div>
         : (

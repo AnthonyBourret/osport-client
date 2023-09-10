@@ -19,7 +19,7 @@ const LegalMentions = () => (
           </button>
         </Link>
 
-        <h1 className="text-2xl font-bold mb-4">LEGAL NOTICE</h1>
+        <h1 className="text-2xl font-bold mb-4 pt-12 sm:pt-0">LEGAL NOTICE</h1>
 
         <section className="mb-8">
           <h2 className="text-lg font-semibold mb-2">Website Edition</h2>
