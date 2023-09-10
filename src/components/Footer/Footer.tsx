@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <div className="absolute bottom-14 sm:bottom-2 right-1">
+    <div className="pt-10 p-2 text-right sm:text-center">
       <Link
         to="/legal_mentions"
         onClick={() => window.scrollTo(0, 0)}

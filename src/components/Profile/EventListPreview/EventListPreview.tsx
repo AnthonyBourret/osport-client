@@ -8,8 +8,8 @@ error : string | null | undefined }) {
   if (error) return null;
   return (
 
-    <div className="stats w-full stats-vertical shadow-xs border border-base-300 rounded-xl mb-4 p-2 bg-neutral-focus sm:mb-0 sm:p-2">
-      <h1 className="m-0 text-2xl py-3 pl-1 h-fit w-fit sm:pb-0">Last results</h1>
+    <div className="stats w-full stats-vertical shadow-xs border border-base-300 rounded-xl mb-4 p-2 bg-neutral-focus sm:mb-0 sm:p-2 sm:w-1/2">
+      <h1 className="m-0 text-2xl py-3 pl-1 h-fit w-fit sm:pb-0 font-semibold">Last results</h1>
       {
         lastEvents && lastEvents.map((eve) => (
           <LastEvent

@@ -1,4 +1,5 @@
 export type Event = {
+  nb_max_participant: number;
   date: string,
   id: number,
   location: string,
@@ -14,6 +15,11 @@ export type Event = {
 export type Sport = {
   name: string;
   gb_rating: number;
+};
+
+export type OwnRating = {
+  rating?: number;
+  name?: string;
 };
 
 export type Participant = {

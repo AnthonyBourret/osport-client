@@ -51,7 +51,6 @@ function EditInfo({ avatar }) {
     e.preventDefault();
     setErrorMessage('');
 
-
     const cleanNewUsername = DOMPurify.sanitize(newUsername);
     const body = {
       userId,
@@ -112,8 +111,12 @@ function EditInfo({ avatar }) {
 
   return (
     <div className="flex flex-col shadow- bg-neutral-focus border border-base-300 rounded-xl items-center text-left sm:w-1/2">
+
+      {/* Edit profile container */}
       <form className="w-full flex flex-col items-center gap-6 py-4" onChange={handleChange}>
-        <h1 className="text-2xl">Edit profile</h1>
+        <h1 className="text-2xl font-semibold">Edit profile</h1>
+
+        {/* Change username container */}
         <div className="w-full px-6 sm:flex sm:flex-col">
           <label htmlFor="username" className="label-text text-base">Change your username</label>
           <div className="flex gap-2 justify-between items-center mt-4">
@@ -121,10 +124,13 @@ function EditInfo({ avatar }) {
           </div>
         </div>
 
+        {/* Change email container */}
         <div className="w-full px-6 sm:flex sm:flex-col">
           <label htmlFor="email" className="label-text text-base">Change your email</label>
           <div className="flex gap-2 justify-between items-center mt-4">
             <input id="email" name="email" type="email" className="input input-sm input-bordered w-3/4" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
+
+            {/* Button to save email & username changes */}
             <button type="button" className="btn btn-sm btn-ghost border-gray-500" onClick={handleSubmit}>Save</button>
           </div>
           {errorMessage ? (
@@ -138,11 +144,10 @@ function EditInfo({ avatar }) {
             </div>
           ) : null}
         </div>
-
       </form>
 
+      {/* Change avatar picture container */}
       <form encType="multipart/form-data" className="w-full flex flex-col items-center gap-6 py-4">
-
         <div className="avatar flex flex-col items-center gap-6 px-6">
           <div className="w-20 rounded-full">
             <label htmlFor="image" className="cursor-pointer">
@@ -163,7 +168,6 @@ function EditInfo({ avatar }) {
           </div>
         </div>
         <p className="text-xs px-4 mb-10 sm:text-sm">Click on your profile picture to chose a new one</p>
-
       </form>
     </div>
 

@@ -41,7 +41,7 @@ function LastEvent({
       </div>
       <div className="stat-desc text-sm w-1/4 text-center">{sportName}</div>
       <Link to={`/event/${id}`}>
-        <div className="link stat-value text-sm w-1/3 font-bold text-center">See event</div>
+        <div className="link-info stat-value text-sm w-1/3 font-semibold text-center hover:underline">See event</div>
       </Link>
     </div>
   );

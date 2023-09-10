@@ -12,13 +12,13 @@ interface ScoreProps {
 }
 function FinalScore({ firstTeamScore, secondTeamScore }: ScoreProps) {
   return (
-    <div className="flex flex-col gap-4 items-center px-6 bg-neutral-focus p-4 shadow-sm border rounded-xl border-base-300 w-full h-full sm:flex-row sm:justify-evenly">
-      <h2 className="text-2xl">Final Score</h2>
+    <div className="flex flex-col gap-4 items-center p-6 bg-neutral-focus shadow-sm border rounded-xl border-base-300 w-full min-[1010px]:flex-row sm:justify-evenly">
+      <h2 className="text-2xl min-[950px]:text-3xl font-semibold">Final Score</h2>
       <div className="flex p-4">
         <div className="flex flex-col gap-3">
 
           {/* Première équipe */}
-          <h3 className="font-bold">Team 1</h3>
+          <h3 className="font-semibold">Team 1</h3>
 
           {/* // Nested ternary pour afficher le composant qui affiche le score avec la bonne couleur
           // Si les scores sont égaux, on affiche <FinalScoreDraw />
@@ -39,7 +39,7 @@ function FinalScore({ firstTeamScore, secondTeamScore }: ScoreProps) {
         <div className="flex flex-col gap-3">
 
           {/* Deuxième équipe */}
-          <h3 className="font-bold">Team 2</h3>
+          <h3 className="font-semibold">Team 2</h3>
 
           {/* Même procédé que pour la première équipe en inversant la comparaison */}
           {

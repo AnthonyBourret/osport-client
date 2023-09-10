@@ -1,10 +1,12 @@
 import React, {
- useState, useContext, FormEvent, ChangeEvent,
+ useState, useContext, useEffect, FormEvent, ChangeEvent,
 } from 'react';
 import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 //
 import AuthContext from '../../context/AuthContext';
+import DarkLogo from '../../assets/DarkThemeLogo';
+import LightLogo from '../../assets/LightThemeLogo';
 
 const LogIn: React.FC = () => {
   const { logUser } = useContext(AuthContext);
@@ -12,6 +14,13 @@ const LogIn: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [isServerValid, setIsServerValid] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'dracula');
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme!);
+    const localTheme = localStorage.getItem('theme');
+    document.querySelector('html')?.setAttribute('data-theme', localTheme!);
+  }, [theme]);
 
   const resetValidationStates = () => {
     setErrorMessage(''); // Reset error messages
@@ -70,16 +79,18 @@ const LogIn: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10">
+    <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10 sm:w-9/12 sm:m-auto">
       <div className="flex flex-col items-center gap-10">
-        <h1 className="text-6xl">O'sport</h1>
-        <div className="text-xl">Welcome on O'Sport</div>
+        <div className="flex items-center">
+          {theme === 'dracula' ? <DarkLogo width="240" height="120" /> : <LightLogo width="240" height="120" />}
+        </div>
       </div>
 
       <form className="flex flex-col w-full min-[820px]:w-1/2 items-center p-6 gap-4 bg-neutral-focus shadow-sm border border-gray-500 rounded-xl">
+        <div className="text-xl font-bold">Welcome on O'Sport</div>
         <div className="form-control w-full">
           <label className="label" htmlFor="first-name">
-            <span className="label-text text-lg">Username : </span>
+            <span className="label-text text-lg font-semibold">Username : </span>
           </label>
           <input
             id="first-name"
@@ -95,7 +106,7 @@ const LogIn: React.FC = () => {
 
         <div className="form-control w-full">
           <label className="label" htmlFor="password">
-            <span className="label-text text-lg">Password : </span>
+            <span className="label-text text-lg font-semibold">Password : </span>
           </label>
           <input
             id="password"
@@ -117,19 +128,19 @@ const LogIn: React.FC = () => {
         )}
 
         <div className="flex self-end">
-          <Link to="/" className="link link-info text-sm">
+          <Link to="/" className="link-info text-sm hover:underline">
             Password forgotten ?
           </Link>
         </div>
 
-        <button type="button" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md" onClick={handleSubmit}>
+        <button type="button" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md font-bold max-w-full" onClick={handleSubmit}>
           Sign in
         </button>
       </form>
 
       <div className="text-center w-full min-[820px]:w-1/2 shadow-sm bg-neutral-focus p-4 border border-gray-500 rounded-lg text-sm sm:text-md">
         New on O'Sport ? &nbsp;
-        <Link to="/signup" className="link link-info">
+        <Link to="/signup" className="link-info font-semibold hover:underline">
           Create an account
         </Link>
       </div>

@@ -50,8 +50,10 @@ function SendInvitations() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 py-8 px-4 bg-neutral-focus shadow-sm border rounded-xl border-base-300 sm:w-1/2 sm:h-fit">
-      <h2 className="text-sm flex items-center">
+    <div className="flex flex-col items-center justify-around gap-6 py-8 px-4 bg-neutral-focus shadow-sm border rounded-xl border-base-300 sm:w-1/2">
+
+      {/* Number of players required container */}
+      <h2 className="text-sm flex items-center font-semibold">
         {/* +1 to include the creator */}
         {eventData.friends.length + 1 === eventData.nbMaxParticipant && (
           <img src="https://img.icons8.com/?size=512&id=63312&format=png" className="w-7" alt="valid" />
@@ -65,8 +67,8 @@ function SendInvitations() {
         required
       </h2>
 
+      {/* Selected players container */}
       <div className="flex flex-wrap gap-8 my-5 justify-center max-w-[500px]">
-
         {/* One individual div for the creator */}
         <div key={eventData.creator.id} className="flex items-center gap-2 flex-col">
           <div className="avatar">
@@ -91,9 +93,11 @@ function SendInvitations() {
           </div>
         ))}
       </div>
+
+      {/* Button to send invitations */}
       <button
         type="button"
-        className={`btn ${eventData.friends.length + 1 === eventData.nbMaxParticipant ? 'btn-wide btn-ghost border-gray-500 shadow-sm' : 'btn-disabled'}`}
+        className={`btn font-bold ${eventData.friends.length + 1 === eventData.nbMaxParticipant ? 'btn-wide btn-ghost border-gray-500 shadow-sm' : 'btn-disabled'}`}
         disabled={eventData.friends.length + 1 > eventData.nbMaxParticipant}
         onClick={handleCreateEvent}
       >

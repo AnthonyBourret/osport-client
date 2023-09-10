@@ -1,11 +1,15 @@
 /* eslint-disable max-len */
-import React, { useState, useContext, FormEvent } from 'react';
+import React, {
+ useState, useEffect, useContext, FormEvent,
+} from 'react';
 import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import axiosInstance from '../../services/axiosInstance';
 import AuthContext from '../../context/AuthContext';
 import useValidation from '../hooks/useValidation'; // Import the custom hook
 // import { usernameCreation, passwordCreation, emailCreation } from '../../utils/regex';
+import DarkLogo from '../../assets/DarkThemeLogo';
+import LightLogo from '../../assets/LightThemeLogo';
 
 const SignUp: React.FC = () => {
   const { logUser } = useContext(AuthContext);
@@ -28,6 +32,13 @@ const SignUp: React.FC = () => {
   const [isEmailValid, validateEmail] = useValidation(true, regexes);
   const [isCguChecked, setIsCguChecked] = useState(true);
   const [isServerValid, setIsServerValid] = useState(true);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'dracula');
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme!);
+    const localTheme = localStorage.getItem('theme');
+    document.querySelector('html')?.setAttribute('data-theme', localTheme!);
+  }, [theme]);
 
   const resetValidationStates = () => {
     setErrorMessage('');
@@ -78,16 +89,18 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10">
+    <div className="flex flex-col items-center gap-6 py-6 px-4 mb-10 sm:w-9/12 sm:m-auto">
       <div className="flex flex-col items-center gap-10">
-        <h1 className="text-6xl">O'sport</h1>
-        <div className="text-xl">Welcome on O'Sport</div>
+        <div className="flex items-center">
+          {theme === 'dracula' ? <DarkLogo width="240" height="120" /> : <LightLogo width="240" height="120" />}
+        </div>
       </div>
 
       <form className="flex flex-col w-full min-[820px]:w-1/2 items-center p-6 gap-4 bg-neutral-focus shadow-sm border border-gray-500 rounded-xl">
+        <div className="text-xl font-bold">Create a new account</div>
         <div className="form-control w-full">
           <label className="label" htmlFor="username">
-            <span className="label-text text-lg">Username : </span>
+            <span className="label-text text-lg font-semibold">Username : </span>
           </label>
           <input
             id="username"
@@ -115,7 +128,7 @@ const SignUp: React.FC = () => {
 
         <div className="form-control w-full">
           <label className="label" htmlFor="email">
-            <span className="label-text text-lg">Email : </span>
+            <span className="label-text text-lg font-semibold">Email : </span>
           </label>
           <input
             id="email"
@@ -139,7 +152,7 @@ const SignUp: React.FC = () => {
 
         <div className="form-control w-full">
           <label className="label" htmlFor="password">
-            <span className="label-text text-lg">Password : </span>
+            <span className="label-text text-lg font-semibold">Password : </span>
           </label>
           <input
             id="password"
@@ -167,7 +180,7 @@ const SignUp: React.FC = () => {
 
         <div className="form-control w-full">
           <label className="label" htmlFor="confirmPassword">
-            <span className="label-text text-lg">Password Confirmation: </span>
+            <span className="label-text text-lg font-semibold">Password Confirmation: </span>
           </label>
           <input
             id="confirmPassword"
@@ -208,7 +221,7 @@ const SignUp: React.FC = () => {
               />
               <span className="label-text text-xs sm:text-sm">
                 Accept
-                <Link to="/legal_mentions" className="link link-info m-1">
+                <Link to="/legal_mentions" className="font-semibold link-info m-1 hover:underline">
                   Terms of use
                 </Link>
               </span>
@@ -244,7 +257,7 @@ const SignUp: React.FC = () => {
           </span>
         )}
 
-        <button type="submit" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md" onClick={handleSubmit}>
+        <button type="submit" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md font-bold max-w-full" onClick={handleSubmit}>
           Sign up
         </button>
       </form>
@@ -252,7 +265,7 @@ const SignUp: React.FC = () => {
       <div className="text-center text-sm sm:text-md shadow-sm w-full min-[820px]:w-1/2 bg-neutral-focus p-4 border border-gray-500 rounded-lg">
         {' '}
         Already have an account ? &nbsp;
-        <Link to="/login" className="link link-info font-bold">
+        <Link to="/login" className="link-info font-semibold hover:underline">
           Sign In
         </Link>
       </div>
@@ -263,16 +276,17 @@ const SignUp: React.FC = () => {
         <Link
           to="/legal_mentions"
           onClick={() => window.scrollTo(0, 0)}
-          className="link link-info"
+          className="link-info font-semibold hover:underline"
         >
           Terms of Use
         </Link>
         {' '}
         and the
+        {' '}
         <Link
           to="/privacy_policy"
           onClick={() => window.scrollTo(0, 0)}
-          className="link link-info"
+          className="link-info font-semibold hover:underline"
         >
           Privacy Policy
         </Link>

@@ -48,7 +48,7 @@ function ResultInput({ userId, creatorId, eventId } : ResultsInputProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 py-4 justify-evenly w-full items-center bg-neutral-focus shadow-sm border rounded-xl border-base-300 h-full min-[1100px]:flex-row"
+      className="flex flex-col gap-4 items-center p-6 bg-neutral-focus shadow-sm border rounded-xl border-base-300 w-full min-[1010px]:flex-row sm:justify-evenly"
     >
       {userId !== creatorId ? (
         <div className="p-4 font-bold text-center">Waiting for final result to be udpated</div>
@@ -56,7 +56,7 @@ function ResultInput({ userId, creatorId, eventId } : ResultsInputProps) {
         <div className="flex flex-col gap-2">
           <div className="flex justify-center">
             <div className="flex flex-col  items-center gap-3">
-              <h3 className="font-bold">Team 1</h3>
+              <h3 className="font-semibold">Team 1</h3>
               <input
                 disabled={userId !== creatorId}
                 type="number"
@@ -67,7 +67,7 @@ function ResultInput({ userId, creatorId, eventId } : ResultsInputProps) {
             </div>
             <div className="divider divider-horizontal my-3" />
             <div className="flex flex-col items-center gap-3">
-              <h3 className="font-bold">Team 2</h3>
+              <h3 className="font-semibold">Team 2</h3>
               <input
                 disabled={userId !== creatorId}
                 type="number"
@@ -89,7 +89,10 @@ function ResultInput({ userId, creatorId, eventId } : ResultsInputProps) {
         ) : (
           <button
             type="submit"
-            disabled={!resultTeamOne || !resultTeamTwo}
+            disabled={
+              (resultTeamOne === null || resultTeamTwo === null)
+              || (!resultTeamOne || !resultTeamTwo)
+            }
             className="btn btn-ghost border-gray-500"
           >
             Save result

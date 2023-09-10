@@ -5,7 +5,6 @@ const PrivacyPolicy = () => (
   <>
     <div className="flex flex-col items-center gap-10 mt-6">
       <h1 className="text-6xl">O'sport</h1>
-      <div className="text-xl">Welcome on O'Sport</div>
     </div>
 
     <div className="min-h-screen p-8 px-3 sm:px-8 mb-10">
@@ -13,20 +12,20 @@ const PrivacyPolicy = () => (
         <Link
           to="/signup"
           onClick={() => window.scrollTo(0, 0)}
-          className="absolute top-5 right-5"
+          className="absolute top-5 left-8 sm:right-5 sm:left-auto"
         >
           <button type="button" className="btn btn-ghost border-2 border-gray-500 sm:btn-md">
             Return
           </button>
         </Link>
-        <h1 className="text-2xl font-bold mb-4">PRIVACY POLICY</h1>
+        <h1 className="text-2xl font-bold mb-4 pt-12 sm:pt-0">PRIVACY POLICY</h1>
 
         <section className="mb-8">
           <h2 className="text-lg font-semibold mb-2">Privacy Policy</h2>
           <p>
             The website
             {' '}
-            <a href="https://osport-client.netlify.app/" className="text-blue-500 hover:underline">https://osport-client.netlify.app/</a>
+            <a href="https://osport-client.netlify.app/" className="link-info hover:underline">https://osport-client.netlify.app/</a>
             {' '}
             is owned by O'sport, who is a data controller of your personal data.
           </p>
@@ -34,12 +33,12 @@ const PrivacyPolicy = () => (
             We have adopted this privacy policy, which determines how we process
             the information collected by
             {' '}
-            <a href="https://osport-client.netlify.app/" className="text-blue-500 hover:underline">https://osport-client.netlify.app/</a>
+            <a href="https://osport-client.netlify.app/" className="link-info hover:underline">https://osport-client.netlify.app/</a>
             , also providing the reasons why we need to collect certain personal
             data about you. Therefore, you should read this privacy policy before
             using the website of
             {' '}
-            <a href="https://osport-client.netlify.app/" className="text-blue-500 hover:underline">https://osport-client.netlify.app/</a>
+            <a href="https://osport-client.netlify.app/" className="link-info hover:underline">https://osport-client.netlify.app/</a>
             .
           </p>
           <p>
@@ -53,7 +52,7 @@ const PrivacyPolicy = () => (
           <p>
             When you visit
             {' '}
-            <a href="https://osport-client.netlify.app/" className="text-blue-500 hover:underline">https://osport-client.netlify.app/</a>
+            <a href="https://osport-client.netlify.app/" className="link-info hover:underline">https://osport-client.netlify.app/</a>
             , we automatically collect certain information about your device,
             including information about your web browser, IP address, time zone,
             and some of the cookies installed on your device. Additionally, when
@@ -92,7 +91,7 @@ const PrivacyPolicy = () => (
             or contact us directly from the website. Users who are unsure about what
             information is mandatory are invited to contact us via
             {' '}
-            <a href="mailto:osport@ogmail.com" className="text-blue-500 hover:underline">osport@ogmail.com</a>
+            <a href="mailto:osport@ogmail.com" className="link-info hover:underline">osport@ogmail.com</a>
             .
           </p>
         </section>
@@ -172,7 +171,7 @@ const PrivacyPolicy = () => (
             questions regarding individual rights and your personal information, you can
             send an email to
             {' '}
-            <a href="mailto:osport@ogmail.com" className="text-blue-500 hover:underline">osport@ogmail.com</a>
+            <a href="mailto:osport@ogmail.com" className="link-info hover:underline">osport@ogmail.com</a>
             .
           </p>
         </section>

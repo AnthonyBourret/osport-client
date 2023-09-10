@@ -4,7 +4,6 @@ import formDate from '../../utils/formatDate';
 import AuthContext from '../../context/AuthContext';
 import useFetch from '../hooks/useFetch';
 import Header from '../Header/Header';
-import Menu from '../Menu/Menu';
 import EventInfo from './EventInfo/EventInfo';
 import PlayerList from './PlayerList/PlayerList';
 import PlayerListConfirmed from './PlayerListConfirmed/PlayerListConfirmed';
@@ -15,6 +14,7 @@ import ResultInput from './ResultInput/ResultInput';
 import FinalScore from './FinalScore/FinalScore';
 import ResponseInvitation from './ResponseInvitation/ResponseInvitation';
 import Footer from '../Footer/Footer';
+import Spinner from '../Spinner/Spinner';
 
 function Event() {
   // On recupère l'id de l'utilisateur connecté dans le AuthContext
@@ -33,8 +33,8 @@ function Event() {
 
   // On utilise le hook personnalisé pour récupérer les infos de l'event et les
   // particpants d'un match
-  const { data: event/* , error: eventsError */ } = useFetch(`event/details/${eventId}`, 'GET');
-  const { data: participants/* , error: participantsError */ } = useFetch(`participant/event/${eventId}`, 'GET');
+  const { data: event, loading: eventLoading/* , error: eventsError */ } = useFetch(`event/details/${eventId}`, 'GET');
+  const { data: participants, loading: participantsLoading/* , error: participantsError */ } = useFetch(`participant/event/${eventId}`, 'GET');
 
   useEffect(() => {
     const checkIfInvited = () => {
@@ -58,16 +58,16 @@ function Event() {
   }, [participants, userId, navigate]);
 
   return (
-    <>
+    <div className="mb-12 sm:mb-0">
       <Header />
-      <Menu />
+
       {isInvited && (<ResponseInvitation eventId={event?.id} userId={userId} />) }
 
       {event
       && (
-      <div className="flex flex-col w-full p-4 mx-auto mb-24 min-[800px]:flex-row sm:gap-4 sm:w-10/12 sm:m-auto sm:my-4 sm:mb-10 sm:pb-4">
+      <div className="flex flex-col w-full p-4 mx-auto min-[800px]:flex-row sm:gap-4 sm:w-10/12 sm:m-auto sm:my-4 sm:mb-10 sm:pb-4">
 
-        <div className="flex flex-col gap-4 mb-4 min-[800px]:w-1/2 items-center ">
+        <div className="flex flex-col gap-4 mb-4 items-center min-[800px]:w-1/2">
 
           {/* On envoie les infos nécessaires au composant d'affichage des informations du match */}
           <EventInfo
@@ -98,34 +98,34 @@ function Event() {
           )}
         </div>
 
-        <div className="flex flex-col-reverse gap-4 mb-4 min-[800px]:w-1/2 items-center sm:flex-col">
-
-          {/* Composant qui affiche le chat */}
-          <Chat eventId={eventId} />
+        <div className="flex flex-col gap-4 mb-4 items-center min-[800px]:w-1/2">
 
           {/* Composants pour afficher soit le bouton de confirmation du match,
           soit l'input pour saisir le résultat ou le résultat final */}
 
           {/* Si statut open => Bouton pour confirmer le match */}
           {(event.status === 'open' || event.status === 'full') && (
-          <ConfirmEventButton
-            userId={userId}
-            creatorId={event.creator_id}
-            eventId={eventId}
-            eventStatus={event.status}
-            requiredPlayers={event.nb_max_participant}
-            participants={participants}
-          />
-     )}
+            <ConfirmEventButton
+              userId={userId}
+              creatorId={event.creator_id}
+              eventId={eventId}
+              eventStatus={event.status}
+              requiredPlayers={event.nb_max_participant}
+              participants={participants}
+            />
+            )}
           {/* Si statut closed => Input pour saisir le résultat */}
           {event.status === 'closed' && <ResultInput userId={userId} creatorId={event.creator_id} eventId={eventId} />}
           {/* Si statut finished => Affichage du score final */}
           {event.status === 'finished' && <FinalScore firstTeamScore={event.score_team_1} secondTeamScore={event.score_team_2} />}
+
+          {/* Composant qui affiche le chat */}
+          <Chat eventId={eventId} />
         </div>
       </div>
         )}
-      <Footer />
-    </>
+      {eventLoading || participantsLoading ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div> : <Footer />}
+    </div>
   );
 }
 

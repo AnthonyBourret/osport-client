@@ -6,9 +6,9 @@ function ResultLoader({ status } : { status: string }) {
     <>
       {(status === 'open' || status === 'full')
       // Si le statut du match est open, on affiche le premier loader
-        ? <span className="text-lg pl-2 sm:text-3xl sm:pl-2.5">●</span>
+        ? <span className="loading loading-dots loading-md sm:loading-lg" />
       // Sinon, on affiche le deuxième loader (full ou closed)
-        : <span className="loading loading-ball loading-md sm:loading-lg" />}
+        : <span className="loading loading-spinner loading-md sm:loading-lg" />}
     </>
   );
 }

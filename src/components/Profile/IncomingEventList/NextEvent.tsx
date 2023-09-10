@@ -18,10 +18,10 @@ function NextEvent({
         <h2 className="text-left text-xl font-bold sm:w:2/5">{formDateNumeric(date)}</h2>
       </div>
       <div className="flex justify-between items-center gap-4 py-6 sm:w-3/5">
-        <div className="stat-desc text-base font-bold w-1/5 text-center">{sportName}</div>
-        <div className="stat-title text-base font-bold w-1/5 text-center">{location}</div>
+        <div className="stat-desc text-base font-semibold w-1/5 text-center">{sportName}</div>
+        <div className="stat-title text-base font-semibold w-1/5 text-center">{location}</div>
         <Link to={`/event/${id}`}>
-          <div className="link stat-value text-base font-bold w-1/5 text-center">Go to event</div>
+          <div className="link-info stat-value text-base font-semibold w-1/5 text-center hover:underline">Go to event</div>
         </Link>
       </div>
     </div>

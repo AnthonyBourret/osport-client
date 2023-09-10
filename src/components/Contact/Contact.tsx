@@ -4,8 +4,8 @@ import useFetch from '../hooks/useFetch';
 import ContactList from './ContactList/ContactList';
 import SearchContact from './SearchContact/SearchContact';
 import Header from '../Header/Header';
-import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
+import Spinner from '../Spinner/Spinner';
 
 function Contact() {
   // On recupere l'id de l'user connecté
@@ -16,9 +16,9 @@ function Contact() {
   const [sent, setSent] = useState(null);
 
   // On recupere la liste des amis de l'user connecté
-  const { data: sentList, error: sentListError } = useFetch(`user_friends/sent/${id}`, 'GET');
-  const { data: acceptedList } = useFetch(`user_friends/accepted/${id}`, 'GET');
-  const { data: pendingList } = useFetch(`user_friends/pending/${id}`, 'GET');
+  const { data: sentList, error: sentListError, loading: sentLoading } = useFetch(`user_friends/sent/${id}`, 'GET');
+  const { data: acceptedList, loading: acceptedLoading } = useFetch(`user_friends/accepted/${id}`, 'GET');
+  const { data: pendingList, loading: pendingLoading } = useFetch(`user_friends/pending/${id}`, 'GET');
 
   // Le useEffect permet de mettre à jour la liste des contacts à chaque fois que
   // les listes d'amis sont mises à jour
@@ -41,19 +41,25 @@ function Contact() {
   if (sentListError) return null;
 
   return (
-    <div className="pb-6">
+    <div className="pb-6 mb-8 sm:mb-0">
       <Header />
-      <Menu />
-      <div className="m-4 mb-24 sm:w-3/5 sm:p-4 sm:m-auto sm:pb-4 sm:mt-4">
-        <SearchContact userId={id} />
-        <ContactList
-          accepted={accepted}
-          pendings={pendings}
-          sents={sent}
-          userId={id}
-        />
-      </div>
-      <Footer />
+
+      {sentLoading || acceptedLoading || pendingLoading
+      ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div>
+      : (
+        <>
+          <div className="m-4 sm:w-3/5 sm:p-4 sm:m-auto sm:pb-4 sm:mt-4">
+            <SearchContact userId={id} />
+            <ContactList
+              accepted={accepted}
+              pendings={pendings}
+              sents={sent}
+              userId={id}
+            />
+          </div>
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
