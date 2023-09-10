@@ -26,7 +26,7 @@ const eventOpen = events?.filter((event: Event) => (event.status === 'open' || e
       <Menu />
       {/* Loader for the whole page while fetching is active */}
       {loadingSports || loadingOwnRating || loadingEvent
-      ? <div className="flex items-center justify-center w-full"><Spinner /></div>
+      ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div>
       : (
         <>
           <div className="flex flex-col px-4 sm:mb-0 my-auto sm:w-[90%] sm:m-auto sm:my-4">
