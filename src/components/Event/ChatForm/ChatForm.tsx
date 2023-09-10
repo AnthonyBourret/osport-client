@@ -62,9 +62,9 @@ function ChatForm({
           placeholder="Type here"
           // La valeur de l'input change quand du texte est saisi dans ce dernier
           onChange={(e) => setInputValue(e.target.value)}
-          className="input w-[85%] h-full border-2 border-neutral-focus rounded-t-none"
+          className="input w-[85%] h-full border-2 border-neutral-focus rounded-t-none min-h-[40px]"
         />
-        <button type="submit" className={`w-[15%] ${inputValue === null ? 'btn-disabled' : 'btn'} btn-ghost font-semibold`}>Send</button>
+        <button type="submit" className={`w-[15%] ${inputValue === null ? 'btn-disabled' : 'btn'} btn-ghost min-w-[60px] font-semibold`}>Send</button>
       </form>
     </div>
   );

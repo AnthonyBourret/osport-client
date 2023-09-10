@@ -12,7 +12,7 @@ const LegalMentions = () => (
         <Link
           to="/signup"
           onClick={() => window.scrollTo(0, 0)}
-          className="absolute top-5 right-5"
+          className="absolute top-5 left-8 sm:right-5 sm:left-auto"
         >
           <button type="button" className="btn btn-ghost border-2 border-gray-500 sm:btn-md">
             Return

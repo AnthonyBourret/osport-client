@@ -7,7 +7,7 @@ import DOMPurify from 'dompurify';
 import axiosInstance from '../../services/axiosInstance';
 import AuthContext from '../../context/AuthContext';
 import useValidation from '../hooks/useValidation'; // Import the custom hook
-import { usernameCreation, passwordCreation, emailCreation } from '../../utils/regex';
+// import { usernameCreation, passwordCreation, emailCreation } from '../../utils/regex';
 import DarkLogo from '../../assets/DarkThemeLogo';
 import LightLogo from '../../assets/LightThemeLogo';
 
@@ -257,7 +257,7 @@ const SignUp: React.FC = () => {
           </span>
         )}
 
-        <button type="submit" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md font-bold" onClick={handleSubmit}>
+        <button type="submit" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md font-bold max-w-full" onClick={handleSubmit}>
           Sign up
         </button>
       </form>

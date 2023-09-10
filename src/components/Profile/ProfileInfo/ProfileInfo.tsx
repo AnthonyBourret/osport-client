@@ -50,7 +50,7 @@ const displayOwnRating = (arrayOwnRating : OwnRating[]) : string => {
 
   return (
     // ProfileInfo container
-    <div className="flex flex-col h-content gap-4 pb-4 px-5 m-auto w-full h-80 shadow-xs border border-base-300 rounded-xl mb-2 bg-neutral-focus sm:mb-0 sm:w-1/2">
+    <div className="flex flex-col h-content gap-4 pb-4 px-5 m-auto w-full min-h-80 shadow-xs border border-base-300 rounded-xl mb-2 bg-neutral-focus sm:mb-0 sm:w-1/2">
       <div className="flex flex-col items-center justify-between w-full">
 
         {/* Avatar and username container */}
@@ -67,7 +67,7 @@ const displayOwnRating = (arrayOwnRating : OwnRating[]) : string => {
         </div>
 
         {/* Link to edit profile and logout */}
-        <div className="px-4 flex justify-center sm:self-end">
+        <div className=" flex justify-center sm:self-end">
           <Link to="/edit_profile">
             <button type="button" className="btn btn-ghost border-gray-500 btn-xs m-2">Edit profile</button>
           </Link>

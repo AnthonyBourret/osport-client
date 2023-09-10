@@ -133,7 +133,7 @@ const LogIn: React.FC = () => {
           </Link>
         </div>
 
-        <button type="button" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md font-bold" onClick={handleSubmit}>
+        <button type="button" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md font-bold max-w-full" onClick={handleSubmit}>
           Sign in
         </button>
       </form>
