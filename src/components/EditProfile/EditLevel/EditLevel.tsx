@@ -24,7 +24,7 @@ function EditLevel() {
     <div className="flex flex-col shadow-sm bg-neutral-focus border border-base-300 rounded-xl gap-6 py-4 items-center text-left sm:w-1/2">
 
       {/* Title */}
-      <h1 className="text-2xl">Your level</h1>
+      <h1 className="text-2xl font-semibold">Your level</h1>
 
       {/* Form to chose a sport and chose a level for the selected sport */}
       <form className="form-control w-full px-6 gap-4">

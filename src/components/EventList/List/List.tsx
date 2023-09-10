@@ -63,7 +63,7 @@ function List({ events }: { events: Event[] }) {
             {/* Link to the event page */}
             {/* On envoie l'id de l'event dans l'url */}
             <Link to={`/event/${event.id}`}>
-              <p className="link link-info text-md sm:text-lg">View Event</p>
+              <p className="link-info text-md sm:text-lg font-semibold hover:underline">View Event</p>
             </Link>
           </div>
         </li>

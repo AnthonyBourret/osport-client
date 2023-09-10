@@ -37,7 +37,7 @@ function SearchContact({ userId }: { userId: number }) {
         placeholder="Type a username..."
         className="input input-bordered border-neutral w-3/4 shadow-md"
       />
-      <button type="submit" className="btn shadow-md w-1/5 text-xs">Add a friend</button>
+      <button type="submit" className="btn shadow-md w-1/5 text-xs font-bold">Add a friend</button>
     </form>
   );
 }

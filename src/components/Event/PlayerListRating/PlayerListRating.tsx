@@ -79,7 +79,7 @@ const handleSubmit = (e : React.ChangeEvent<HTMLFormElement>) => {
   return (
     <div className="flex flex-col items-center bg-neutral-focus p-4 shadow-sm border rounded-xl border border-base-300 w-full h-full ">
 
-      <p className="bg-neutral-focus p-4 shadow-md text-base rounded-xl text-center mx-1 my-2 sm:m-4 ">
+      <p className="bg-neutral-focus p-4 shadow-md text-base rounded-xl text-center mx-1 my-2 sm:m-4 font-semibold">
         You can rate other players by clicking their profile pictures
       </p>
       {/* Première équipe */}
@@ -111,7 +111,7 @@ const handleSubmit = (e : React.ChangeEvent<HTMLFormElement>) => {
 
       {/* Séparateur entre les 2 équipes */}
 
-      <div className="divider px-6 my-6">VS</div>
+      <div className="divider px-6 my-6 font-bold">VS</div>
 
       {/* Deuxième équipe */}
 

@@ -114,7 +114,7 @@ function EditInfo({ avatar }) {
 
       {/* Edit profile container */}
       <form className="w-full flex flex-col items-center gap-6 py-4" onChange={handleChange}>
-        <h1 className="text-2xl">Edit profile</h1>
+        <h1 className="text-2xl font-semibold">Edit profile</h1>
 
         {/* Change username container */}
         <div className="w-full px-6 sm:flex sm:flex-col">

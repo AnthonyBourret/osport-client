@@ -64,7 +64,7 @@ function ChatForm({
           onChange={(e) => setInputValue(e.target.value)}
           className="input w-[85%] h-full border-2 border-neutral-focus rounded-t-none"
         />
-        <button type="submit" className={`w-[15%] ${inputValue === null ? 'btn-disabled' : 'btn'} btn-ghost`}>Send</button>
+        <button type="submit" className={`w-[15%] ${inputValue === null ? 'btn-disabled' : 'btn'} btn-ghost font-semibold`}>Send</button>
       </form>
     </div>
   );

@@ -12,16 +12,16 @@ function EditProfile() {
   const { data: userInfos } = useFetch(`user/${userId}`, 'GET');
 
   return (
-    <>
+    <div className="mb-12 sm:mb-0">
       <Header />
       <Menu />
-      <div className="flex flex-col p-4 mb-28 sm:w-4/5 sm:m-auto sm:gap-4 sm:my-4 sm:pb-4 sm:flex-row sm:justify-between">
+      <div className="flex flex-col p-4 sm:w-4/5 sm:m-auto sm:gap-4 sm:my-4 sm:pb-4 sm:flex-row sm:justify-between">
         <EditInfo avatar={userInfos?.image_url} />
         <div className="divider" />
         <EditLevel />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

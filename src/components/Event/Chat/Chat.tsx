@@ -31,7 +31,7 @@ function Chat({ eventId }: { eventId: number }) {
   return (
     <div className="flex flex-col w-full h-[100vh] bg-neutral-focus shadow-sm border rounded-xl border-base-300 min-[800px]:h-full">
       <div className="w-full flex justify-between bg-base-100 border-2 border-neutral-focus rounded-xl rounded-b-none">
-        <h2 className="text-2xl p-4">Messages</h2>
+        <h2 className="text-2xl p-4 font-semibold">Messages</h2>
         <button type="button" onClick={handleClick}>
           <RefreshIcon />
         </button>

@@ -90,7 +90,7 @@ const LogIn: React.FC = () => {
         <div className="text-xl font-bold">Welcome on O'Sport</div>
         <div className="form-control w-full">
           <label className="label" htmlFor="first-name">
-            <span className="label-text text-lg">Username : </span>
+            <span className="label-text text-lg font-semibold">Username : </span>
           </label>
           <input
             id="first-name"
@@ -106,7 +106,7 @@ const LogIn: React.FC = () => {
 
         <div className="form-control w-full">
           <label className="label" htmlFor="password">
-            <span className="label-text text-lg">Password : </span>
+            <span className="label-text text-lg font-semibold">Password : </span>
           </label>
           <input
             id="password"
@@ -128,19 +128,19 @@ const LogIn: React.FC = () => {
         )}
 
         <div className="flex self-end">
-          <Link to="/" className="link link-info text-sm">
+          <Link to="/" className="link-info text-sm hover:underline">
             Password forgotten ?
           </Link>
         </div>
 
-        <button type="button" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md" onClick={handleSubmit}>
+        <button type="button" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md font-bold" onClick={handleSubmit}>
           Sign in
         </button>
       </form>
 
       <div className="text-center w-full min-[820px]:w-1/2 shadow-sm bg-neutral-focus p-4 border border-gray-500 rounded-lg text-sm sm:text-md">
         New on O'Sport ? &nbsp;
-        <Link to="/signup" className="link link-info">
+        <Link to="/signup" className="link-info font-semibold hover:underline">
           Create an account
         </Link>
       </div>

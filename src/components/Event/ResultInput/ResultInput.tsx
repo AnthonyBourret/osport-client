@@ -56,7 +56,7 @@ function ResultInput({ userId, creatorId, eventId } : ResultsInputProps) {
         <div className="flex flex-col gap-2">
           <div className="flex justify-center">
             <div className="flex flex-col  items-center gap-3">
-              <h3 className="font-bold">Team 1</h3>
+              <h3 className="font-semibold">Team 1</h3>
               <input
                 disabled={userId !== creatorId}
                 type="number"
@@ -67,7 +67,7 @@ function ResultInput({ userId, creatorId, eventId } : ResultsInputProps) {
             </div>
             <div className="divider divider-horizontal my-3" />
             <div className="flex flex-col items-center gap-3">
-              <h3 className="font-bold">Team 2</h3>
+              <h3 className="font-semibold">Team 2</h3>
               <input
                 disabled={userId !== creatorId}
                 type="number"

@@ -16,7 +16,7 @@ function EventInfo({
     <div className="flex flex-col items-center gap-3 w-full bg-neutral-focus py-4 shadow-sm rounded-xl border border-base-300">
 
       {/* Progress bar container */}
-      <ul className="steps w-full py-6">
+      <ul className="steps w-full py-6 font-semibold">
         <li className="step text-xs min-[900px]:text-sm step-info" data-content="⏳">Preparation</li>
         <li className={`step text-xs min-[900px]:text-sm ${status !== 'open' ? 'step-info' : 'step'}`} data-content="✔">Confirmation</li>
         <li

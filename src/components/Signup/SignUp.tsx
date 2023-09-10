@@ -100,7 +100,7 @@ const SignUp: React.FC = () => {
         <div className="text-xl font-bold">Create a new account</div>
         <div className="form-control w-full">
           <label className="label" htmlFor="username">
-            <span className="label-text text-lg">Username : </span>
+            <span className="label-text text-lg font-semibold">Username : </span>
           </label>
           <input
             id="username"
@@ -128,7 +128,7 @@ const SignUp: React.FC = () => {
 
         <div className="form-control w-full">
           <label className="label" htmlFor="email">
-            <span className="label-text text-lg">Email : </span>
+            <span className="label-text text-lg font-semibold">Email : </span>
           </label>
           <input
             id="email"
@@ -152,7 +152,7 @@ const SignUp: React.FC = () => {
 
         <div className="form-control w-full">
           <label className="label" htmlFor="password">
-            <span className="label-text text-lg">Password : </span>
+            <span className="label-text text-lg font-semibold">Password : </span>
           </label>
           <input
             id="password"
@@ -180,7 +180,7 @@ const SignUp: React.FC = () => {
 
         <div className="form-control w-full">
           <label className="label" htmlFor="confirmPassword">
-            <span className="label-text text-lg">Password Confirmation: </span>
+            <span className="label-text text-lg font-semibold">Password Confirmation: </span>
           </label>
           <input
             id="confirmPassword"
@@ -221,7 +221,7 @@ const SignUp: React.FC = () => {
               />
               <span className="label-text text-xs sm:text-sm">
                 Accept
-                <Link to="/legal_mentions" className="link link-info m-1">
+                <Link to="/legal_mentions" className="font-semibold link-info m-1 hover:underline">
                   Terms of use
                 </Link>
               </span>
@@ -257,7 +257,7 @@ const SignUp: React.FC = () => {
           </span>
         )}
 
-        <button type="submit" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md" onClick={handleSubmit}>
+        <button type="submit" className="btn btn-ghost btn-wide border-2 border-gray-500 sm:btn-md font-bold" onClick={handleSubmit}>
           Sign up
         </button>
       </form>
@@ -265,7 +265,7 @@ const SignUp: React.FC = () => {
       <div className="text-center text-sm sm:text-md shadow-sm w-full min-[820px]:w-1/2 bg-neutral-focus p-4 border border-gray-500 rounded-lg">
         {' '}
         Already have an account ? &nbsp;
-        <Link to="/login" className="link link-info font-bold">
+        <Link to="/login" className="link-info font-semibold hover:underline">
           Sign In
         </Link>
       </div>
@@ -276,16 +276,17 @@ const SignUp: React.FC = () => {
         <Link
           to="/legal_mentions"
           onClick={() => window.scrollTo(0, 0)}
-          className="link link-info"
+          className="link-info font-semibold hover:underline"
         >
           Terms of Use
         </Link>
         {' '}
         and the
+        {' '}
         <Link
           to="/privacy_policy"
           onClick={() => window.scrollTo(0, 0)}
-          className="link link-info"
+          className="link-info font-semibold hover:underline"
         >
           Privacy Policy
         </Link>

@@ -58,14 +58,14 @@ function Event() {
   }, [participants, userId, navigate]);
 
   return (
-    <>
+    <div className="mb-12 sm:mb-0">
       <Header />
       <Menu />
       {isInvited && (<ResponseInvitation eventId={event?.id} userId={userId} />) }
 
       {event
       && (
-      <div className="flex flex-col w-full p-4 mx-auto mb-24 min-[800px]:flex-row sm:gap-4 sm:w-10/12 sm:m-auto sm:my-4 sm:mb-10 sm:pb-4">
+      <div className="flex flex-col w-full p-4 mx-auto min-[800px]:flex-row sm:gap-4 sm:w-10/12 sm:m-auto sm:my-4 sm:mb-10 sm:pb-4">
 
         <div className="flex flex-col gap-4 mb-4 items-center min-[800px]:w-1/2">
 
@@ -125,7 +125,7 @@ function Event() {
       </div>
         )}
       <Footer />
-    </>
+    </div>
   );
 }
 

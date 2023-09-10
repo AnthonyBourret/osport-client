@@ -5,7 +5,6 @@ const LegalMentions = () => (
   <>
     <div className="flex flex-col items-center gap-10 mt-6">
       <h1 className="text-6xl">O'sport</h1>
-      <div className="text-xl">Welcome on O'Sport</div>
     </div>
 
     <div className="min-h-screen p-8 px-3 sm:px-8 mb-10">
@@ -27,7 +26,7 @@ const LegalMentions = () => (
           <p>
             This website, accessible at URL
             {' '}
-            <a href="https://osport-client.netlify.app/" className="text-blue-500 hover:underline">
+            <a href="https://osport-client.netlify.app/" className="link-info hover:underline">
               https://osport-client.netlify.app/
             </a>
             {' ('}
@@ -61,7 +60,7 @@ const LegalMentions = () => (
           <p>By phone: +33612345689</p>
           <p>
             By email:
-            <a href="mailto:mail@gmail.com" className="text-blue-500 hover:underline">mail@gmail.com</a>
+            <a href="mailto:mail@gmail.com" className="link-info hover:underline">mail@gmail.com</a>
           </p>
           <p>By mail: 2 rue de l'échappée 75010 PARIS</p>
         </section>

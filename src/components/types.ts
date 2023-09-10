@@ -17,6 +17,11 @@ export type Sport = {
   gb_rating: number;
 };
 
+export type OwnRating = {
+  rating?: number;
+  name?: string;
+};
+
 export type Participant = {
   team: number | null;
   event_id: number;
