@@ -66,6 +66,15 @@ const displayOwnRating = (arrayOwnRating : OwnRating[]) : string => {
           { username && (<h1 className="text-3xl font-semibold">{capitalize(username)}</h1>)}
         </div>
 
+        {/* If the user hasn't chosen his level yet, this message will be displayed */}
+        {ownRating && ownRating.length === 0 && (
+          <div className="flex flex-col gap-4 bg-neutral-focus p-4 shadow-md text-base rounded-xl text-center mb-8 sm:m-4">
+            <h2 className="text-lg font-semibold">Welcome on O'sport !!</h2>
+            <p className="text-justify">
+              In order to create balanced teams, you are invited to chose your level by clicking the edit profile button down below.
+            </p>
+          </div>
+        )}
         {/* Link to edit profile and logout */}
         <div className=" flex justify-center sm:self-end">
           <Link to="/edit_profile">

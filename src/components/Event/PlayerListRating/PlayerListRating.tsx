@@ -28,16 +28,9 @@ nbPlayers,
 firstTeamScore,
 secondTeamScore,
  sportId }: PlayersListProps) {
-    // Fonction pour définir le nombre de colonnes à indiquer dans la classe de la <div>
-  // en fonction du nombre de joueurs max. (qu'on divise par 2)
-
   const { user: { userInfos: { userId } } } = useContext(AuthContext);
   const [userIdToRate, setUserIdToRate] = useState<number>(null);
   const formModal = useRef<HTMLFormElement>(null);
-
-  // function colsNumber(nbOfPlayers: number) {
-  //   return `grid grid-cols-${nbOfPlayers / 2} gap-8 p-5`;
-  // }
 
   function openModal() {
    (window as any).ratingModal.showModal();
