@@ -6,7 +6,7 @@ interface EventInfoProps {
   nbPlayers: number;
   status: string;
   duration: number;
-  location : string;
+  location: string;
 }
 
 function EventInfo({
