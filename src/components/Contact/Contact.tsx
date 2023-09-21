@@ -14,36 +14,36 @@ function Contact() {
   const [pendings, setPendings] = useState(null);
   const [accepted, setAccepted] = useState(null);
   const [sent, setSent] = useState(null);
+  const [contactList, setContactList] = useState(null);
 
-  // On recupere la liste des amis de l'user connecté
+  // On recupere la liste des amis de l'user connecté selon chaque statut (sent, accepted, pending)
   const { data: sentList, error: sentListError, loading: sentLoading } = useFetch(`user_friends/sent/${id}`, 'GET');
-  const { data: acceptedList, loading: acceptedLoading } = useFetch(`user_friends/accepted/${id}`, 'GET');
-  const { data: pendingList, loading: pendingLoading } = useFetch(`user_friends/pending/${id}`, 'GET');
+  const { data: acceptedList, error: acceptedListError, loading: acceptedLoading } = useFetch(`user_friends/accepted/${id}`, 'GET');
+  const { data: pendingList, error: pendingListError, loading: pendingLoading } = useFetch(`user_friends/pending/${id}`, 'GET');
 
-  // Le useEffect permet de mettre à jour la liste des contacts à chaque fois que
+  // Le useEffect permet de mettre à jour les listes des contacts à chaque fois que
   // les listes d'amis sont mises à jour
-
- useEffect(() => {
-  if (!acceptedList) return;
-    setAccepted(acceptedList);
-  }, [acceptedList]);
-
- useEffect(() => {
-  if (!pendingList) return;
-    setPendings(pendingList);
-  }, [pendingList]);
-
   useEffect(() => {
-    if (!sentList) return;
-    setSent(sentList);
-  }, [sentList]);
+    if (!acceptedList || !pendingList || !sentList) return;
+      setAccepted(acceptedList);
+      setPendings(pendingList);
+      setSent(sentList);
+    }, [acceptedList, pendingList, sentList]);
 
-  if (sentListError) return null;
+  // useEffect qui permet de créer un nouveau tableau réunissant
+  // tous les contacts précedemment mis à jour
+  useEffect(() => {
+    if (!sent || !accepted || !pendings) return;
+    setContactList([...pendings, ...sent, ...accepted]);
+  }, [sent, accepted, pendings]);
+
+  // Si il y a une erreur lors d'une des 3 requêtes, on ne renvoie
+  if (sentListError || pendingListError || acceptedListError) return null;
 
   return (
     <div className="pb-6 mb-8 sm:mb-0">
       <Header />
-
+      {/* Si le statut loading est true, on affiche l'îcone de chargement */}
       {sentLoading || acceptedLoading || pendingLoading
       ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div>
       : (
@@ -51,9 +51,7 @@ function Contact() {
           <div className="m-4 sm:w-3/5 sm:p-4 sm:m-auto sm:pb-4 sm:mt-4">
             <SearchContact userId={id} />
             <ContactList
-              accepted={accepted}
-              pendings={pendings}
-              sents={sent}
+              contactList={contactList}
               userId={id}
             />
           </div>
