@@ -5,28 +5,34 @@ import React from 'react';
 // We accept only picsum url for faker user or
 // pixabay for user without avatar;
 import OriginAvatarUrl from '../../../utils/originAvatarUrl';
+import PlayerRatingModal from '../PlayerListRating/PlayerRatingModal/PlayerRatingModal';
 
 type Status = 'pending' | 'accepted' | 'rejected';
 
 interface PlayerProps {
   userId : number;
-  userToRateId : number;
   avatar : string;
   username : string;
-  status: Status;
-  getUserToRateId: (state : number) => void;
+  status : Status;
+  userIdToRate: number;
+  sportId: number;
+  eventId: number;
 }
 
-function PlayerComp({
-  userId, userToRateId, avatar, username, status, getUserToRateId,
-}: PlayerProps) {
-  const handleClick = () => getUserToRateId(userToRateId);
-
+function Player({
+  userId,
+  avatar,
+  username,
+  status,
+  userIdToRate,
+  sportId,
+  eventId,
+} : PlayerProps) {
   return (
     <div className="indicator">
       <div
-        className={`flex flex-col items-center justify-center gap-y-1 ${userId !== userToRateId && 'cursor-pointer'}`}
-        onClick={handleClick}
+        className={`flex flex-col items-center justify-center gap-y-1 ${userIdToRate !== userId && 'cursor-pointer'}`}
+
       >
         {status === 'pending'
         ? <span className="indicator-item badge bg-blue-400 text-black font-bold aspect-square mt-1 mr-2 border border-neutral pb-2">...</span>
@@ -38,9 +44,16 @@ function PlayerComp({
           {username}
         </p>
       </div>
+
+      <PlayerRatingModal
+        userId={userId}
+        sportId={sportId}
+        eventId={eventId}
+        userIdToRate={userIdToRate}
+      />
     </div>
 
   );
 }
 
-export default PlayerComp;
+export default Player;

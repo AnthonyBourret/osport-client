@@ -44,12 +44,13 @@ function PlayerListRating({
   // }
 
   function openModal() {
-   (window as any).ratingModal.showModal();
+    (window as any).ratingModal.showModal();
   }
 
   function closeModal() {
     (window as any).ratingModal.close();
   }
+
   // get userIdToRate from child component
   // state is the id of the user to rate
   function getUserToRateId(state : number) {
@@ -57,8 +58,6 @@ function PlayerListRating({
   }
 
   async function rateUser(userRating: number, playerToRateId: number) {
-    console.log('userRating', userRating);
-
     try {
       const res = await axiosInstance.post('rating/sport', {
           rating: Number(userRating),
@@ -72,14 +71,6 @@ function PlayerListRating({
       console.log(error);
     }
   }
-
-  const handleSubmit = () => {
-    console.log('hello');
-
-    rateUser(rating, userIdToRate);
-    closeModal();
-    formModal.current.reset();
-  };
 
   return (
     <div className="flex flex-col items-center bg-neutral-focus p-4 shadow-sm border rounded-xl border border-base-300 w-full h-full ">
@@ -100,14 +91,17 @@ function PlayerListRating({
         {players && players
         .filter((player) => player.team === 1)
         .map((player) => (
-          <div onClick={openModal} key={player.user.id}>
+          <div
+            onClick={player.user.id !== userId && openModal}
+            key={player.user.id}
+          >
             <PlayerComp
-              id={player.user.id}
+              userId={userId}
+              userToRateId={player.user.id}
               avatar={OriginAvatarUrl(player.user.avatar)}
               status={player.status}
               username={player.user.username}
               getUserToRateId={getUserToRateId}
-              isConfirmed
             />
           </div>
         ))}
@@ -131,13 +125,12 @@ function PlayerListRating({
         .map((player) => (
           <div onClick={openModal} key={player.user.id}>
             <PlayerComp
-              id={player.user.id}
+              userId={userId}
+              userToRateId={player.user.id}
               avatar={OriginAvatarUrl(player.user.avatar)}
               status={player.status}
               username={player.user.username}
-              // sportId={sportId}
               getUserToRateId={getUserToRateId}
-              isConfirmed
             />
           </div>
         ))}
@@ -148,7 +141,7 @@ function PlayerListRating({
           method="dialog"
           className="modal-box flex flex-col items-center gap-4 py-12"
           ref={formModal}
-          onSubmit={handleSubmit}
+          onSubmit={() => rateUser(rating, userIdToRate)}
         >
           {/* Le button pour fermer ne fonctionne pas avec le type="button" (modal DaisyUI)  */}
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" type="button" onClick={closeModal}>✕</button>
@@ -161,6 +154,7 @@ function PlayerListRating({
               onChange={(e) => setRating(Number(e.target.value))}
               min={1}
               max={10}
+              value={rating}
               // Si l'id de l'utilisateur à noter est le même que celui de l'utilisateur connecté, on désactive le bouton et l'input
               className={userIdToRate === userId
                 ? 'p-4 bg-neutral btn-disabled shadow-xl border rounded-xl rounded-r-none border-gray-700 w-24 text-center text-xl font-bold'
