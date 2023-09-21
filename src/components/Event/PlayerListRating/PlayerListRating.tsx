@@ -36,16 +36,13 @@ function PlayerListRating({
 
   const { user: { userInfos: { userId } } } = useContext(AuthContext);
   const [userIdToRate, setUserIdToRate] = useState<number>(null);
-  const [rating, setRating] = useState<number>(null);
+  const [rating, setRating] = useState<number>();
   const formModal = useRef<HTMLFormElement>(null);
 
-  // function colsNumber(nbOfPlayers: number) {
-  //   return `grid grid-cols-${nbOfPlayers / 2} gap-8 p-5`;
-  // }
-
-  function openModal() {
+  const openModal = () => {
+    formModal.current.reset();
     (window as any).ratingModal.showModal();
-  }
+  };
 
   function closeModal() {
     (window as any).ratingModal.close();
@@ -92,7 +89,7 @@ function PlayerListRating({
         .filter((player) => player.team === 1)
         .map((player) => (
           <div
-            onClick={player.user.id !== userId && openModal}
+            onClick={player.user.id !== userId && (() => openModal())}
             key={player.user.id}
           >
             <PlayerComp
@@ -123,7 +120,7 @@ function PlayerListRating({
         {players && players
         .filter((player) => player.team === 2)
         .map((player) => (
-          <div onClick={openModal} key={player.user.id}>
+          <div onClick={() => openModal()} key={player.user.id}>
             <PlayerComp
               userId={userId}
               userToRateId={player.user.id}
@@ -141,7 +138,7 @@ function PlayerListRating({
           method="dialog"
           className="modal-box flex flex-col items-center gap-4 py-12"
           ref={formModal}
-          onSubmit={() => rateUser(rating, userIdToRate)}
+          onSubmit={() => { rateUser(rating, userIdToRate); }}
         >
           {/* Le button pour fermer ne fonctionne pas avec le type="button" (modal DaisyUI)  */}
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" type="button" onClick={closeModal}>✕</button>
@@ -151,10 +148,12 @@ function PlayerListRating({
           </h3>
           <div className="flex justify-center w-full">
             <input
-              onChange={(e) => setRating(Number(e.target.value))}
+              onChange={(e) => {
+                setRating(Number(e.target.value));
+              }}
               min={1}
               max={10}
-              value={rating}
+              type="number"
               // Si l'id de l'utilisateur à noter est le même que celui de l'utilisateur connecté, on désactive le bouton et l'input
               className={userIdToRate === userId
                 ? 'p-4 bg-neutral btn-disabled shadow-xl border rounded-xl rounded-r-none border-gray-700 w-24 text-center text-xl font-bold'
