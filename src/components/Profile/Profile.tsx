@@ -13,8 +13,8 @@ function Profile() {
 const { user: { userInfos: { userId } } } = useContext(AuthContext);
 const { data: userInfos } = useFetch(`user/${userId}`, 'GET');
 const { data: events, error: errorEvent, loading: loadingEvent } = useFetch(`event/${userId}`, 'GET');
-const { data: sports, loading: loadingSports } = useFetch(`user/sport/${userId}`, 'GET');
-const { data: ownRating, loading: loadingOwnRating } = useFetch(`user/own_rating/${userId}`, 'GET');
+const { data: sports, loading: loadingSports } = useFetch(`rating/sport/${userId}`, 'GET');
+const { data: ownRating, loading: loadingOwnRating } = useFetch(`rating/own_rating/${userId}`, 'GET');
 
 const eventClosed = events?.filter((event : Event) => event.status === 'finished').slice(0, 3);
 const eventOpen = events?.filter((event: Event) => (event.status === 'open' || event.status === 'full'));

@@ -66,7 +66,7 @@ function SportRanking({ sportSelected, ownRank } : SportRankingProps) {
           sport_id: sportId, // Number
           rating: level, // " Beginner" | "Intermediate" | "Advanced"
         };
-        await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/sport`, body, {})
+        await axios.post(`${import.meta.env.VITE_SERVER_URL}/rating/own_rating`, body, {})
         .then((res) => {
           console.log(res);
         }).catch((err) => {

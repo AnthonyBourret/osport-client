@@ -20,19 +20,23 @@ interface PlayersListProps {
   firstTeamScore: number;
   secondTeamScore: number;
   sportId: number;
+  eventId: number;
 }
 
 function PlayerListRating({
-players,
-nbPlayers,
-firstTeamScore,
-secondTeamScore,
- sportId }: PlayersListProps) {
-    // Fonction pour définir le nombre de colonnes à indiquer dans la classe de la <div>
+  players,
+  nbPlayers,
+  firstTeamScore,
+  secondTeamScore,
+  sportId,
+  eventId,
+}: PlayersListProps) {
+  // Fonction pour définir le nombre de colonnes à indiquer dans la classe de la <div>
   // en fonction du nombre de joueurs max. (qu'on divise par 2)
 
   const { user: { userInfos: { userId } } } = useContext(AuthContext);
   const [userIdToRate, setUserIdToRate] = useState<number>(null);
+  const [rating, setRating] = useState<number>(null);
   const formModal = useRef<HTMLFormElement>(null);
 
   // function colsNumber(nbOfPlayers: number) {
@@ -53,28 +57,29 @@ secondTeamScore,
   }
 
   async function rateUser(userRating: number, playerToRateId: number) {
+    console.log('userRating', userRating);
+
     try {
-      const res = await axiosInstance.patch(
-  'user/sport',
-         { rating: Number(userRating),
-           user_id: playerToRateId,
-           sport_id: sportId,
-           rater_id: userId },
-  );
+      const res = await axiosInstance.post('rating/sport', {
+          rating: Number(userRating),
+          user_id: playerToRateId,
+          sport_id: sportId,
+          rater_id: userId,
+          event_id: eventId,
+        });
       console.log('Server Response:', res);
       } catch (error) {
       console.log(error);
     }
   }
 
-const handleSubmit = (e : React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const userRating = e.target.userRating.value;
+  const handleSubmit = () => {
+    console.log('hello');
+
+    rateUser(rating, userIdToRate);
     closeModal();
-    if (!userRating) return;
-    rateUser(userRating, userIdToRate);
     formModal.current.reset();
-};
+  };
 
   return (
     <div className="flex flex-col items-center bg-neutral-focus p-4 shadow-sm border rounded-xl border border-base-300 w-full h-full ">
@@ -142,21 +147,18 @@ const handleSubmit = (e : React.ChangeEvent<HTMLFormElement>) => {
         <form
           method="dialog"
           className="modal-box flex flex-col items-center gap-4 py-12"
-          onSubmit={handleSubmit}
           ref={formModal}
+          onSubmit={handleSubmit}
         >
           {/* Le button pour fermer ne fonctionne pas avec le type="button" (modal DaisyUI)  */}
-          {/* eslint-disable-next-line react/button-has-type */}
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" type="button" onClick={closeModal}>✕</button>
           <h3 className="font-bold text-lg mb-2">
             {/* Le texte change si l'id de l'utilisateur à noter est le même que celui de l'utilisateur connecté */}
             {userIdToRate === userId ? 'You are not allowed to rate yourself !' : 'Chose a note between 1 to 10'}
           </h3>
           <div className="flex justify-center w-full">
             <input
-              type="number"
-              name="userRating"
-              id="userRating"
+              onChange={(e) => setRating(Number(e.target.value))}
               min={1}
               max={10}
               // Si l'id de l'utilisateur à noter est le même que celui de l'utilisateur connecté, on désactive le bouton et l'input
@@ -167,17 +169,20 @@ const handleSubmit = (e : React.ChangeEvent<HTMLFormElement>) => {
             <button
               type="submit"
               className={userIdToRate === userId ? 'btn btn-disabled btn-lg m-0 rounded-l-none' : 'btn btn-lg m-0 rounded-l-none'}
+              disabled={userIdToRate === userId || !rating}
             >
               Rate
             </button>
           </div>
-          <p
-            className="text-sm pt-8"
-            onClick={closeModal}
-          >
-            Press ESC key or click on ✕ button to close
-
+          <p className="text-sm pt-8">
+            Be careful, once you have rated a player, you can't change your rating !
           </p>
+        </form>
+        <form
+          method="dialog"
+          className="modal-backdrop"
+        >
+          <button type="submit">close</button>
         </form>
       </dialog>
     </div>

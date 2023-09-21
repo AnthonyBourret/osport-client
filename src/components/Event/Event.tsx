@@ -94,6 +94,7 @@ function Event() {
               firstTeamScore={event.score_team_1}
               secondTeamScore={event.score_team_2}
               sportId={event.sport_id}
+              eventId={event.id}
             />
           )}
         </div>

@@ -9,7 +9,7 @@ function EditLevel() {
   const [rank, setRank] = useState();
 
   const { userId } = useContext(AuthContext).user.userInfos;
-  const userSport = useFetch(`/user/own_rating/${userId}`, 'GET');
+  const userSport = useFetch(`/rating/own_rating/${userId}`, 'GET');
 
   useEffect(() => {
   const ownRank = userSport.data?.filter((sport: any) => sport.gb_rating !== 0 && sport.gb_rating !== null && sport.name === sportSelected).map((sport: any) => sport.rating).pop();
