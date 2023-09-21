@@ -1,11 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable object-curly-newline */
-/* eslint-disable max-len */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-
 import React, { useContext, useState, useRef } from 'react';
 import AuthContext from '../../../context/AuthContext';
 import axiosInstance from '../../../services/axiosInstance';
@@ -76,70 +68,79 @@ function PlayerListRating({
       <p className="bg-neutral-focus p-4 shadow-md text-base rounded-xl text-center mx-1 my-2 sm:m-4 font-semibold">
         You can rate other players by clicking their profile pictures
       </p>
+
       {/* Première équipe */}
-
       <TeamResult scoreTeam1={firstTeamScore} scoreTeam2={secondTeamScore} team="Team 1" />
-
-      {/* La classe de la <div> changera automatiquement selon le nombre de joueurs max. */}
       {nbPlayers && (
-      <div className="flex gap-7 flex-wrap justify-center p-4 py-6">
-
-        {/* On filtre les joueurs pour n'afficher que ceux de la l'équipe 1
-        On map sur le tableau qui a été filter pour générer les avatars */}
-        {players && players
-        .filter((player) => player.team === 1)
-        .map((player) => (
-          <div
-            onClick={player.user.id !== userId && (() => openModal())}
-            key={player.user.id}
-          >
-            <PlayerComp
-              userId={userId}
-              userToRateId={player.user.id}
-              avatar={OriginAvatarUrl(player.user.avatar)}
-              status={player.status}
-              username={player.user.username}
-              getUserToRateId={getUserToRateId}
-            />
-          </div>
-        ))}
-      </div>
+        <div className="flex gap-7 flex-wrap justify-center p-4 py-6">
+          {/* On filtre les joueurs pour n'afficher que ceux de la l'équipe 1
+          On map sur le tableau qui a été filter pour générer les avatars */}
+          {players && players
+          .filter((player) => player.team === 1)
+          .map((player) => (
+            <div
+              onClick={player.user.id !== userId && (() => openModal())}
+              key={player.user.id}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  openModal();
+                }
+              }}
+              role="button"
+              aria-label="Rate this player"
+              tabIndex={player.user.id !== userId ? 0 : -1}
+            >
+              <PlayerComp
+                userId={userId}
+                userToRateId={player.user.id}
+                avatar={OriginAvatarUrl(player.user.avatar)}
+                status={player.status}
+                username={player.user.username}
+                getUserToRateId={getUserToRateId}
+              />
+            </div>
+          ))}
+        </div>
       )}
-
-      {/* Séparateur entre les 2 équipes */}
 
       <div className="divider px-6 my-6 font-bold">VS</div>
 
-      {/* Deuxième équipe */}
-
-      {/* Même procédé que pour la première équipe en inversant la comparaison */}
+      {/* Second team */}
       <TeamResult scoreTeam1={secondTeamScore} scoreTeam2={firstTeamScore} team="Team 2" />
-
-      {/* Même procédé que pour la première équipe */}
       {nbPlayers && (
-      <div className="flex gap-7 flex-wrap justify-center p-4 py-6">
-        {players && players
-        .filter((player) => player.team === 2)
-        .map((player) => (
-          <div onClick={() => openModal()} key={player.user.id}>
-            <PlayerComp
-              userId={userId}
-              userToRateId={player.user.id}
-              avatar={OriginAvatarUrl(player.user.avatar)}
-              status={player.status}
-              username={player.user.username}
-              getUserToRateId={getUserToRateId}
-            />
-          </div>
-        ))}
-      </div>
+        <div className="flex gap-7 flex-wrap justify-center p-4 py-6">
+          {players && players
+          .filter((player) => player.team === 2)
+          .map((player) => (
+            <div
+              onClick={() => openModal()}
+              key={player.user.id}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  openModal();
+                }
+              }}
+              role="button"
+              aria-label="Rate this player"
+              tabIndex={player.user.id !== userId ? 0 : -1}
+            >
+              <PlayerComp
+                userId={userId}
+                userToRateId={player.user.id}
+                avatar={OriginAvatarUrl(player.user.avatar)}
+                status={player.status}
+                username={player.user.username}
+                getUserToRateId={getUserToRateId}
+              />
+            </div>
+          ))}
+        </div>
       )}
       <PlayerModal
         userIdToRate={userIdToRate}
         closeModal={closeModal}
         rateUser={rateUser}
         formModal={formModal}
-        userId={userId}
       />
 
     </div>

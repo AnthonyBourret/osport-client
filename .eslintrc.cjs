@@ -37,6 +37,7 @@ module.exports = {
       }
     ],
 
-    "react/no-unescaped-entities": 0
+    "react/no-unescaped-entities": 0,
+    "react/jsx-no-bind": 0,
   }
 };
