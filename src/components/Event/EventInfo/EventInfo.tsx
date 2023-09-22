@@ -1,17 +1,9 @@
 import React from 'react';
-
-interface EventInfoProps {
-  date: string;
-  sport: number;
-  nbPlayers: number;
-  status: string;
-  duration: number;
-  location: string;
-}
+import { EventInfos } from '../../types';
 
 function EventInfo({
  date, sport, nbPlayers, status, duration, location,
-}: EventInfoProps) {
+}: EventInfos) {
   return (
     <div className="flex flex-col items-center gap-3 w-full bg-neutral-focus py-4 shadow-sm rounded-xl border border-base-300">
 

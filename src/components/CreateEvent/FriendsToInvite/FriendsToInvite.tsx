@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import useFetch from '../../hooks/useFetch';
 import { EventContext } from '../../../context/EventContext';
 import AuthContext from '../../../context/AuthContext';
-// import PlayerDefaultIcon from '../../../assets/PlayerDefaultIcon.svg';
 import OriginAvatarUrl from '../../../utils/originAvatarUrl';
 import Spinner from '../../Spinner/Spinner';
 
@@ -11,25 +10,22 @@ function FriendsToInvite() {
   const { user } = useContext(AuthContext);
   const id = user.userInfos.userId;
 
-  // const { user: { userInfos: { userId } } } = useContext(AuthContext);
-  const { data: superInfos, loading: userInfoLoading /* , error: userInfosError, loading: userInfosLoading */ } = useFetch(`user/${id}`, 'GET');
-
-  // const [friends, setFriends] = useState([]);
+  const { data: superInfos, loading: userInfoLoading } = useFetch(`user/${id}`, 'GET');
 
   const { eventData, setEventData } = useContext(EventContext);
-  const { data: friends/* , error: friendsError, loading: friendsLoading */ } = useFetch(`user_friends/accepted/${id}`, 'GET');
+  const { data: friends } = useFetch(`user_friends/accepted/${id}`, 'GET');
 
   const handleCheckboxChange = (friendId, friendUsername, avatarUrl) => {
     const isFriendSelected = eventData.friends.some((friend) => friend.id === friendId);
 
     if (isFriendSelected) {
-      // If friend is already in the list, remove it
+      // Si l'ami est déjà dans la liste, on le retire
       setEventData({
         ...eventData,
         friends: eventData.friends.filter((friend) => friend.id !== friendId),
       });
     } else {
-      // If friend is not in the list, add it
+      // Si l'ami n'est pas dans la liste, on l'ajoute
       setEventData({
         ...eventData,
         friends: [...eventData.friends, {
@@ -42,7 +38,7 @@ function FriendsToInvite() {
   };
 
   useEffect(() => {
-    // We must here use prevEventData to avoid infinite loop
+    // On utilise prevEventData pour éviter une boucle infinie
     setEventData((prevEventData) => ({
       ...prevEventData,
       creator: {
@@ -74,6 +70,7 @@ function FriendsToInvite() {
                 <h1 className="text-xl">{item.friend.username}</h1>
                 <input
                   type="checkbox"
+                  name="friend"
                   className="checkbox checkbox-sm border-2"
                   value={item.friend.id}
                   onChange={(e) => handleCheckboxChange(

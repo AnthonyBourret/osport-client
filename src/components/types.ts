@@ -12,15 +12,6 @@ export type Event = {
   user_status?: string,
 };
 
-export type Sport = {
-  name: string;
-  gb_rating: number;
-};
-
-export type OwnRating = {
-  rating?: number;
-  name?: string;
-};
 
 export type Participant = {
   team: number | null;
@@ -28,7 +19,6 @@ export type Participant = {
   status: string;
   created_at?: string;
   user: User
-
 };
 
 export type User = {
@@ -39,3 +29,73 @@ export type User = {
   password?: string;
   image_url?: string | null;
 };
+
+// Profile Page
+
+export type ProfileInfos = {
+  username : string;
+  avatar : string;
+  ratings : Sport[];
+  ownRating : OwnRating[];
+};
+
+export type LastEvents = {
+  id: number;
+  winnerTeam: number;
+  sportName : string;
+  scoreTeam1: number;
+  scoreTeam2: number;
+  userTeam: number;
+};
+
+export type Sport = {
+  name: string;
+  gb_rating: number;
+  nb_rating: number;
+};
+
+export type OwnRating = {
+  rating?: number;
+  name?: string;
+};
+
+// Contact Page
+
+export type Contacts = {
+  userId: number;
+  contactList: ContactInfo[];
+};
+
+export type ContactInfo = {
+    friend: {
+      avatar: string;
+      username: string;
+      email: string;
+      id: number;
+    };
+    user_id: number;
+    asker_id: number;
+    status: string;
+  };
+
+  export type ContactInfoModal = {
+    avatar: string;
+    username: string;
+    email: string;
+  };
+
+  export type InvitationButton = {
+    askedId: number;
+    askerId: number;
+  };
+
+  // Event Page
+
+  export type EventInfos = {
+    date: string;
+    sport: number;
+    nbPlayers: number;
+    status: string;
+    duration: number;
+    location: string;
+  };

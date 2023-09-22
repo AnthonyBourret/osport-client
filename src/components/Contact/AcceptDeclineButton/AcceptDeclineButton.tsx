@@ -1,12 +1,9 @@
 import React from 'react';
 import axiosInstance from '../../../services/axiosInstance';
+import { InvitationButton } from '../../types';
 
-interface AcceptDeclineButtonProps {
-  askedId: number;
-  askerId: number;
-}
 // Fonction qui permet d'accepter l'invitation
-function AcceptDeclineButton({ askedId, askerId }: AcceptDeclineButtonProps) {
+function AcceptDeclineButton({ askedId, askerId }: InvitationButton) {
   async function addContact(askedUserId: number, userToAddId: number) {
     try {
       const response = await axiosInstance.patch('user_friends/accept', { userId: askedUserId, friendId: userToAddId });

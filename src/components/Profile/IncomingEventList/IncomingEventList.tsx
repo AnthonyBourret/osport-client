@@ -14,7 +14,7 @@ function IncomingEventList({ nextEvents } : { nextEvents : Event[] }) {
           sportName={event.sport_name}
           location={event.location}
         />
-    )) : <p className="p-4 shadow-sm border border-base-300 rounded-xl bg-neutral-focus sm:mb-0 font-semibold">You don't have any events planed</p>}
+    )) : <p className="p-4 shadow-sm border border-base-300 rounded-xl bg-neutral-focus text-lg sm:mb-0 font-semibold">You don't have any events planed</p>}
     </div>
   );
 }

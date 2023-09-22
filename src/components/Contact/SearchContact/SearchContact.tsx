@@ -32,6 +32,7 @@ function SearchContact({ userId }: { userId: number }) {
     >
       <input
         type="text"
+        name="addContact"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Type a username..."

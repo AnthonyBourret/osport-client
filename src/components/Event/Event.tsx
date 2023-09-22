@@ -32,9 +32,9 @@ function Event() {
   const eventId = GetEventId();
 
   // On utilise le hook personnalisé pour récupérer les infos de l'event et les
-  // particpants d'un match
-  const { data: event, loading: eventLoading/* , error: eventsError */ } = useFetch(`event/details/${eventId}`, 'GET');
-  const { data: participants, loading: participantsLoading/* , error: participantsError */ } = useFetch(`participant/event/${eventId}`, 'GET');
+  // participants d'un match
+  const { data: event, loading: eventLoading } = useFetch(`event/details/${eventId}`, 'GET');
+  const { data: participants, loading: participantsLoading } = useFetch(`participant/event/${eventId}`, 'GET');
 
   useEffect(() => {
     const checkIfInvited = () => {

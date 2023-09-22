@@ -5,30 +5,22 @@ import { Link } from 'react-router-dom';
 import levelNumberToString from '../../../utils/levelNumberToString';
 import axiosInstance from '../../../services/axiosInstance';
 import capitalize from '../../../utils/capitalize';
-import type { Sport, OwnRating } from '../../types';
+import type { Sport, OwnRating, ProfileInfos } from '../../types';
 import AuthContext from '../../../context/AuthContext';
 import OriginAvatarUrl from '../../../utils/originAvatarUrl';
 
-interface ProfileInfosInterface {
-username : string;
-avatar : string;
-sports : Sport[];
-ownRating : OwnRating[];
-}
-
 function ProfileInfo({
- username, avatar, sports, ownRating,
-} : ProfileInfosInterface) {
+ username, avatar, ratings, ownRating,
+} : ProfileInfos) {
 const { setIsAuth } = useContext(AuthContext);
 const [sportChosen, setSportChosen] = useState<'Football' | 'BasketBall'>('Football');
-// const [cookie, removeCookie] = useCookies(['user']);
 
 const handleClickLogout = async () => {
     setIsAuth(false);
     await axiosInstance.post('/logout');
 };
 
-const handleChangeSport = (e) => {
+const handleChangeSport = (e: any) => {
 setSportChosen(e.target.value);
 };
 
@@ -88,21 +80,22 @@ const displayOwnRating = (arrayOwnRating : OwnRating[]) : string => {
       <div className="w-full h-full flex flex-col justify-evenly items-center gap-4">
         <div className="form-control w-full px-4 gap-4">
           <label className="label-text text-xl font-semibold" htmlFor="sport">Check your level</label>
-          <select className="select select-bordered select-sm" onChange={handleChangeSport} defaultValue={sportChosen}>
+          <select className="select select-bordered select-sm" id="sport" onChange={handleChangeSport} defaultValue={sportChosen}>
             {/* <option disabled selected>{sportChosen}</option> */}
             <option>Football</option>
             <option>Basketball</option>
           </select>
         </div>
-        {(sports) && (
+        {(ratings) && (
         <div className="text-xl text-base bg-neutral-focus rounded-xl shadow-md p-5 font-bold">
 
           {/* If global rating is null => ownRating is chosen instead */}
-          {(sports[0].gb_rating !== null && sports[1].gb_rating !== null)
-            ? displayCurrentSport(sports)
+          {(ratings.length === 0 && ownRating.length === 0)
+            ? displayCurrentSport(ratings)
             : displayOwnRating(ownRating)}
         </div>
         )}
+
       </div>
     </div>
   );

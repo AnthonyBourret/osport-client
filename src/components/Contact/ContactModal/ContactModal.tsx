@@ -1,16 +1,11 @@
 import React from 'react';
+import { ContactInfoModal } from '../../types';
 
-interface ContactModalProps {
-    avatar: string;
-    username: string;
-    email: string;
-}
-
-function ContactModal({ avatar, username, email } : ContactModalProps) {
+function ContactModal({ avatar, username, email } : ContactInfoModal) {
   return (
     <dialog id="contact_modal" className="modal">
       <div className="modal-box flex flex-col items-center gap-16 px-12 pt-0">
-        <form method="dialog">
+        <form method="dialog" name="contactModal">
           {/* eslint-disable-next-line react/button-has-type */}
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
