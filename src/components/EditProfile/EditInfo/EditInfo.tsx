@@ -11,7 +11,6 @@ import OriginAvatarUrl from '../../../utils/originAvatarUrl';
 function EditInfo({ avatar }: { avatar: string }) {
   const { userId } = useContext(AuthContext).user.userInfos;
   const imageRef = useRef<HTMLInputElement>(null);
-
   const [newUsername, setNewUsername] = useState<string>('');
   const [newEmail, setNewEmail] = useState<string>('');
   const [body, setBody] = useState<object>(null);
@@ -110,7 +109,7 @@ function EditInfo({ avatar }: { avatar: string }) {
     const { data } = useMutation('/user', body, 'PATCH');
 
   return (
-    <div className="flex flex-col shadow- bg-neutral-focus border border-base-300 rounded-xl items-center text-left sm:w-1/2">
+    <div className="flex flex-col shadow-sm bg-neutral-focus border border-base-300 rounded-xl items-center text-left sm:w-1/2">
 
       {/* Edit profile container */}
       <form className="w-full flex flex-col items-center gap-6 py-4" onChange={handleChange}>

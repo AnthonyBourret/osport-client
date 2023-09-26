@@ -44,7 +44,7 @@ function PlayerModal({
             Rate
           </button>
         </div>
-        <p className="text-sm pt-8">
+        <p className="text-sm pt-8 text-center">
           Be careful, once you have rated a player, you can't change your rating !
         </p>
       </form>

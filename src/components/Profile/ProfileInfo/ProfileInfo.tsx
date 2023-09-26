@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useCookies, Cookies } from 'react-cookie';
 import levelNumberToString from '../../../utils/levelNumberToString';
 import axiosInstance from '../../../services/axiosInstance';
 import capitalize from '../../../utils/capitalize';

@@ -10,18 +10,24 @@ function ContactModal({ avatar, username, email } : ContactInfoModal) {
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <div className="avatar flex items-center gap-8 w-fit">
-          <div className="w-20 rounded-full border-2 border-neutral-focus sm:w-24">
+          <div className="w-20 rounded-full border-2 border-neutral-focus sm:w-20">
             {avatar
                   ? <img src={avatar} alt={username} />
                   : <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="default avatar" />}
           </div>
-          <h1 className="text-4xl sm:text-5xl font-semibold">{username}</h1>
+          <h1 className="text-4xl sm:text-4xl font-semibold">{username}</h1>
         </div>
         <div className="alert flex justify-center w-fit">
-          <p className="text-xl sm:text-2xl font-semibold sm:px-4">{email}</p>
+          <p className="text-xl sm:text-xl font-semibold sm:px-4">{email}</p>
         </div>
         <p className="text-sm text-center mt-8">Press ESC key or click on ✕ button to close</p>
       </div>
+      <form
+        method="dialog"
+        className="modal-backdrop"
+      >
+        <button type="submit">close</button>
+      </form>
     </dialog>
   );
 }
