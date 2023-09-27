@@ -29,7 +29,7 @@ function EditLevel() {
       {/* Form to chose a sport and chose a level for the selected sport */}
       <form className="form-control w-full px-6 gap-4">
         <label className="label-text text-base" htmlFor="sport">Select a sport to chose a level</label>
-        <select className="select select-bordered text-neutral-content" value={sportSelected} onChange={handleChangeSport}>
+        <select className="select select-bordered text-neutral-content" id="sport" value={sportSelected} onChange={handleChangeSport}>
           <option value="Choice" disabled className="font-bold italic">Pick a sport</option>
           <option value="Football">Football</option>
           <option value="Basketball">Basket-ball</option>

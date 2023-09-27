@@ -8,10 +8,9 @@ import AuthContext from '../../../context/AuthContext';
 import useFetch from '../../hooks/useFetch';
 import OriginAvatarUrl from '../../../utils/originAvatarUrl';
 
-function EditInfo({ avatar }) {
+function EditInfo({ avatar }: { avatar: string }) {
   const { userId } = useContext(AuthContext).user.userInfos;
   const imageRef = useRef<HTMLInputElement>(null);
-
   const [newUsername, setNewUsername] = useState<string>('');
   const [newEmail, setNewEmail] = useState<string>('');
   const [body, setBody] = useState<object>(null);
@@ -107,10 +106,10 @@ function EditInfo({ avatar }) {
   }
 };
 
-    const { data, error } = useMutation('/user', body, 'PATCH');
+    const { data } = useMutation('/user', body, 'PATCH');
 
   return (
-    <div className="flex flex-col shadow- bg-neutral-focus border border-base-300 rounded-xl items-center text-left sm:w-1/2">
+    <div className="flex flex-col shadow-sm bg-neutral-focus border border-base-300 rounded-xl items-center text-left sm:w-1/2">
 
       {/* Edit profile container */}
       <form className="w-full flex flex-col items-center gap-6 py-4" onChange={handleChange}>
@@ -120,7 +119,7 @@ function EditInfo({ avatar }) {
         <div className="w-full px-6 sm:flex sm:flex-col">
           <label htmlFor="username" className="label-text text-base">Change your username</label>
           <div className="flex gap-2 justify-between items-center mt-4">
-            <input id="username" name="username" type="text" className="input input-sm input-bordered w-3/4" value={newUsername} onChange={(e) => setNewUsername(e.target.value)} />
+            <input id="username" name="username" type="text" className="input input-sm input-bordered w-3/4" autoComplete="off" value={newUsername} onChange={(e) => setNewUsername(e.target.value)} />
           </div>
         </div>
 
@@ -128,7 +127,7 @@ function EditInfo({ avatar }) {
         <div className="w-full px-6 sm:flex sm:flex-col">
           <label htmlFor="email" className="label-text text-base">Change your email</label>
           <div className="flex gap-2 justify-between items-center mt-4">
-            <input id="email" name="email" type="email" className="input input-sm input-bordered w-3/4" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
+            <input id="email" name="email" type="email" className="input input-sm input-bordered w-3/4" autoComplete="off" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
 
             {/* Button to save email & username changes */}
             <button type="button" className="btn btn-sm btn-ghost border-gray-500" onClick={handleSubmit}>Save</button>

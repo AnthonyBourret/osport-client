@@ -1,34 +1,25 @@
 /* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useCookies, Cookies } from 'react-cookie';
 import levelNumberToString from '../../../utils/levelNumberToString';
 import axiosInstance from '../../../services/axiosInstance';
 import capitalize from '../../../utils/capitalize';
-import type { Sport, OwnRating } from '../../types';
+import type { Sport, OwnRating, ProfileInfos } from '../../types';
 import AuthContext from '../../../context/AuthContext';
 import OriginAvatarUrl from '../../../utils/originAvatarUrl';
 
-interface ProfileInfosInterface {
-username : string;
-avatar : string;
-sports : Sport[];
-ownRating : OwnRating[];
-}
-
 function ProfileInfo({
- username, avatar, sports, ownRating,
-} : ProfileInfosInterface) {
+ username, avatar, ratings, ownRating,
+} : ProfileInfos) {
 const { setIsAuth } = useContext(AuthContext);
 const [sportChosen, setSportChosen] = useState<'Football' | 'BasketBall'>('Football');
-// const [cookie, removeCookie] = useCookies(['user']);
 
 const handleClickLogout = async () => {
     setIsAuth(false);
     await axiosInstance.post('/logout');
 };
 
-const handleChangeSport = (e) => {
+const handleChangeSport = (e: any) => {
 setSportChosen(e.target.value);
 };
 
@@ -66,6 +57,15 @@ const displayOwnRating = (arrayOwnRating : OwnRating[]) : string => {
           { username && (<h1 className="text-3xl font-semibold">{capitalize(username)}</h1>)}
         </div>
 
+        {/* If the user hasn't chosen his level yet, this message will be displayed */}
+        {ownRating && ownRating.length === 0 && (
+          <div className="flex flex-col gap-4 bg-neutral-focus p-4 shadow-md text-base rounded-xl text-center mb-8 sm:m-4">
+            <h2 className="text-lg font-semibold">Welcome on O'sport !!</h2>
+            <p className="text-justify">
+              In order to create balanced teams, you are invited to chose your level by clicking the edit profile button down below.
+            </p>
+          </div>
+        )}
         {/* Link to edit profile and logout */}
         <div className=" flex justify-center sm:self-end">
           <Link to="/edit_profile">
@@ -79,21 +79,22 @@ const displayOwnRating = (arrayOwnRating : OwnRating[]) : string => {
       <div className="w-full h-full flex flex-col justify-evenly items-center gap-4">
         <div className="form-control w-full px-4 gap-4">
           <label className="label-text text-xl font-semibold" htmlFor="sport">Check your level</label>
-          <select className="select select-bordered select-sm" onChange={handleChangeSport} defaultValue={sportChosen}>
+          <select className="select select-bordered select-sm" id="sport" onChange={handleChangeSport} defaultValue={sportChosen}>
             {/* <option disabled selected>{sportChosen}</option> */}
             <option>Football</option>
             <option>Basketball</option>
           </select>
         </div>
-        {(sports) && (
+        {(ratings) && (
         <div className="text-xl text-base bg-neutral-focus rounded-xl shadow-md p-5 font-bold">
 
           {/* If global rating is null => ownRating is chosen instead */}
-          {(sports[0].gb_rating !== null && sports[1].gb_rating !== null)
-            ? displayCurrentSport(sports)
+          {(ratings.length === 0 && ownRating.length === 0)
+            ? displayCurrentSport(ratings)
             : displayOwnRating(ownRating)}
         </div>
         )}
+
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ function Profile() {
 const { user: { userInfos: { userId } } } = useContext(AuthContext);
 const { data: userInfos } = useFetch(`user/${userId}`, 'GET');
 const { data: events, error: errorEvent, loading: loadingEvent } = useFetch(`event/${userId}`, 'GET');
-const { data: sports, loading: loadingSports } = useFetch(`rating/sport/${userId}`, 'GET');
+const { data: sportsRatings, loading: loadingSportsRatings } = useFetch(`rating/sport/${userId}`, 'GET');
 const { data: ownRating, loading: loadingOwnRating } = useFetch(`rating/own_rating/${userId}`, 'GET');
 
 const eventClosed = events?.filter((event : Event) => event.status === 'finished').slice(0, 3);
@@ -24,7 +24,7 @@ const eventOpen = events?.filter((event: Event) => (event.status === 'open' || e
       <Header />
 
       {/* Loader for the whole page while fetching is active */}
-      {loadingSports || loadingOwnRating || loadingEvent
+      {loadingSportsRatings || loadingOwnRating || loadingEvent
       ? <div className="flex items-center justify-center w-full my-8"><Spinner /></div>
       : (
         <>
@@ -34,7 +34,7 @@ const eventOpen = events?.filter((event: Event) => (event.status === 'open' || e
               <ProfileInfo
                 username={userInfos?.username}
                 avatar={userInfos?.image_url}
-                sports={sports}
+                ratings={sportsRatings}
                 ownRating={ownRating}
               />
               <EventListPreview lastEvents={eventClosed} error={errorEvent} />

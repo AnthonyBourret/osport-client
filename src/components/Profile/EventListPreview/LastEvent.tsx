@@ -1,15 +1,6 @@
 import React from 'react';
-import formDateNumeric from '../../../utils/formatDateNumeric';
 import { Link } from 'react-router-dom';
-
-interface LastEventProps {
-  id: number;
-  winnerTeam: number;
-  sportName : string;
-  scoreTeam1: number;
-  scoreTeam2: number;
-  userTeam: number;
-}
+import { LastEvents } from '../../types';
 
 function displayResult(winnerTeam : number, userTeam : number) {
 if (winnerTeam === 0) {
@@ -26,7 +17,7 @@ return '';
 
 function LastEvent({
  id, winnerTeam, sportName, scoreTeam1, scoreTeam2, userTeam,
-} : LastEventProps) {
+} : LastEvents) {
   return (
     <div className="flex stat justify-around items-center w-full p-2">
       <div className="stat-desc font-bold w-1/6">{displayResult(winnerTeam, userTeam)}</div>

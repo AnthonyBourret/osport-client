@@ -9,10 +9,12 @@ function CreateEventForm() {
       <h1 className="text-3xl sm:pb-4">New event</h1>
       <div className="flex flex-col p-5 gap-5 w-full min-[815px]:flex-row min-[815px]:flex-wrap min-[815px]:justify-around min-[815px]:w-full">
         <div className="flex flex-col gap-3">
+
           {/* On selectionne le sport pour créer l'event */}
           <label htmlFor="sport" className="text-lg font-semibold">Chose a sport</label>
           <select
             className="select shadow-md select-sm bg-base-100 m-auto w-full"
+            id="sport"
             onChange={(e) => {
               setEventData({ ...eventData, sportId: Number(e.target.value) });
             }}
@@ -22,11 +24,13 @@ function CreateEventForm() {
             <option value={2}>BasketBall</option>
           </select>
         </div>
+
         {/* Une fois le sport choisi on selectionne le nombre de participants */}
         <div className="flex flex-col gap-3">
-          <label htmlFor="nb-particpant" className="text-lg font-semibold">Number of participants</label>
+          <label htmlFor="nbParticpant" className="text-lg font-semibold">Number of participants</label>
           <select
             className="select shadow-md select-sm bg-base-100 m-auto w-full"
+            id="nbParticpant"
             onChange={(e) => {
               setEventData({ ...eventData, nbMaxParticipant: Number(e.target.value) });
             }}
@@ -36,13 +40,14 @@ function CreateEventForm() {
             <option value={10}>5v5</option>
           </select>
         </div>
+
         {/* On selectionne le lieu de l'event */}
         <div className="flex flex-col justify-between gap-3">
           <label htmlFor="location" className="text-lg font-semibold">Location</label>
           <input
             className="select shadow-md select-sm bg-base-100 m-auto w-full"
             type="text"
-            name="location"
+            id="location"
             placeholder="City..."
             onChange={(e) => {
               setEventData({ ...eventData, location: e.target.value });
@@ -55,7 +60,7 @@ function CreateEventForm() {
           <input
             className="select select-sm shadow-md bg-base-100 m-auto w-full"
             type="text"
-            name="duration"
+            id="duration"
             placeholder="Duration in min ..."
             onChange={(e) => {
               setEventData({ ...eventData, duration: Number(e.target.value) });
