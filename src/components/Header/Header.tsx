@@ -22,7 +22,7 @@ function Header() {
 }, [theme]);
 
   return (
-    <header className="flex items-center relative justify-between p-4 min-[800px]:px-8 w-full bg-neutral-focus w-full bg-neutral-focus">
+    <header className="flex items-center relative justify-between p-4 min-[800px]:px-8 w-full bg-neutral-focus">
       {/* Logo */}
       <Link to="/">
         <div className="flex items-center">
