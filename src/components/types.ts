@@ -64,6 +64,7 @@ export type OwnRating = {
 export type Contacts = {
   userId: number;
   contactList: ContactInfo[];
+  filter: string;
 };
 
 export type ContactInfo = {
@@ -87,6 +88,10 @@ export type ContactInfo = {
   export type InvitationButton = {
     askedId: number;
     askerId: number;
+  };
+
+  export type FilterSelection = {
+    setfilter: (filter: string) => void;
   };
 
   // Event Page

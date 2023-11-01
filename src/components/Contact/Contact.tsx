@@ -6,6 +6,7 @@ import SearchContact from './SearchContact/SearchContact';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Spinner from '../Spinner/Spinner';
+import Filters from './Filters/Filters';
 
 function Contact() {
   // On recupere l'id de l'user connecté
@@ -15,6 +16,7 @@ function Contact() {
   const [accepted, setAccepted] = useState(null);
   const [sent, setSent] = useState(null);
   const [contactList, setContactList] = useState(null);
+  const [filter, setfilter] = useState('all');
 
   // On recupere la liste des amis de l'user connecté selon chaque statut (sent, accepted, pending)
   const { data: sentList, error: sentListError, loading: sentLoading } = useFetch(`user_friends/sent/${id}`, 'GET');
@@ -50,8 +52,12 @@ function Contact() {
         <>
           <div className="m-4 sm:w-3/5 sm:p-4 sm:m-auto sm:pb-4 sm:mt-4">
             <SearchContact userId={id} />
+            <Filters
+              setfilter={setfilter}
+            />
             <ContactList
               contactList={contactList}
+              filter={filter}
               userId={id}
             />
           </div>

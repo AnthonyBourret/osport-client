@@ -10,7 +10,7 @@ import InvitationLoader from '../InvitationLoader/InvitationLoader';
 import ContactModal from '../ContactModal/ContactModal';
 import { Contacts, ContactInfo } from '../../types';
 
-function ContactList({ userId, contactList } : Contacts) {
+function ContactList({ userId, contactList, filter } : Contacts) {
   const [picture, setPicture] = useState(null);
   const [name, setName] = useState(null);
   const [mail, setMail] = useState(null);
@@ -24,9 +24,13 @@ function ContactList({ userId, contactList } : Contacts) {
 
   return (
     <ul className="w-full">
-
+      {/* Filter sur la liste avaant le Map, on vérifie que le statut de l'invitation est égal au filtre */}
+      {/* Si le filtre === 'all', on affiche tous les contacts avec les statuts 'accepted' et 'pending' */}
+      {/* Sinon on filtre selon le statut choisi */}
       {/* Map sur la liste des contacts créée grâce au spread operator */}
-      {contactList && contactList.length > 0 && contactList.map((contact: ContactInfo) => (
+      {contactList && contactList.length > 0
+      && contactList.filter((contact) => contact.status === (filter === 'all' ? contact.status : filter))
+      .map((contact: ContactInfo) => (
         <li
           key={contact.friend.id}
           className="bg-neutral-focus flex flex-col gap-6 shadow-md border border-base-300 rounded-xl py-2.5 px-6 my-4 sm:flex-row sm:items-center sm:justify-between"
