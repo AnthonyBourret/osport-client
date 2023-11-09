@@ -1,5 +1,5 @@
 const formDate = (date: string): string => {
-  const dateFormated = new Intl.DateTimeFormat('fr-FR', {
+  const dateFormated = new Intl.DateTimeFormat('en-GB', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',

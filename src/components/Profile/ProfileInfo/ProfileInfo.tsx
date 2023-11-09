@@ -86,7 +86,7 @@ const displayOwnRating = (arrayOwnRating : OwnRating[]) : string => {
           </select>
         </div>
         {(ratings) && (
-        <div className="text-xl text-base bg-neutral-focus rounded-xl shadow-md p-5 font-bold">
+        <div className="text-xl bg-neutral-focus rounded-xl shadow-md p-5 font-bold">
 
           {/* If global rating is null => ownRating is chosen instead */}
           {(ratings.length === 0 && ownRating.length === 0)
